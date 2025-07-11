@@ -46,21 +46,21 @@ export default function HomePage() {
             {/* Main Headline */}
             <div className="text-center mb-8 md:mb-12">
               <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight tracking-tight">
-                alongsideOS — AI Answers with <strong className="text-red-600">Zero Copy-Paste</strong>
+                alongsideOS — <strong className="text-red-600">Zero Copy-Paste</strong> AI
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-6 md:mb-8 font-light italic">
-                Your screen, your conversation, instant ChatGPT-level insight.
+                Your screen, your audio, your mic... instant ChatGPT-level insight.
               </p>
             </div>
 
             {/* Value Proposition */}
             <div className="text-center mb-8 md:mb-12 max-w-4xl mx-auto">
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                Stop tab-hopping, screenshot juggling, and window shuffling. alongsideOS auto-detects what you see and
-                hear, then delivers spot-on answers in the moment—no extra clicks, no context lost.
+                Stop tab-hopping, screenshot juggling, and window shuffling. 
+                
               </p>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                Real-time answers that live right beside you, not in a far-off chatbot temple.
+                alongsideOS auto-detects what you see and hear, then delivers spot-on answers in the moment—no extra clicks, no context lost.
               </p>
             </div>
 
