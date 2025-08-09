@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100 py-12 md:py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img src="/logo.png" alt="alongsideOS" className="w-6 h-6" />
@@ -36,6 +36,51 @@ export default function Footer() {
                   Pricing
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/use-cases"
+                  className="hover:text-red-600 transition-colors"
+                >
+                  Use Cases
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-4">Use Cases</h3>
+            <ul className="space-y-3 text-sm md:text-base text-gray-600">
+              <li>
+                <Link
+                  href="/use-cases#sales"
+                  className="hover:text-red-600 transition-colors"
+                >
+                  Sales
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/use-cases#support"
+                  className="hover:text-red-600 transition-colors"
+                >
+                  Support
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/use-cases#recruiting"
+                  className="hover:text-red-600 transition-colors"
+                >
+                  Recruiting
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/use-cases#consulting"
+                  className="hover:text-red-600 transition-colors"
+                >
+                  Consulting
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -60,22 +105,14 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Legal</h3>
             <ul className="space-y-3 text-sm md:text-base text-gray-600">
                 <li>
                   <Link
-                    href="/#about"
+                    href="/eula"
                     className="hover:text-red-600 transition-colors"
                   >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/#why-us"
-                    className="hover:text-red-600 transition-colors"
-                  >
-                    Why Us
+                    EULA
                   </Link>
                 </li>
                 <li>
