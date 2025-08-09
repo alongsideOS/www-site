@@ -37,12 +37,16 @@ export default function ExcelPage() {
               context switching.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
-                Download for Excel
-              </Button>
-              <Button size="lg" variant="outline">
-                Enterprise Sales
-              </Button>
+              <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+                <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
+                  Download for Excel
+                </Button>
+              </Link>
+              <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+                <Button size="lg" variant="outline">
+                  Enterprise Sales
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -288,12 +292,16 @@ export default function ExcelPage() {
             Build models faster, explain formulas instantly, and keep momentum in every meeting.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
-            <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
-              Download for Excel
-            </Button>
-            <Button size="lg" variant="outline" className="bg-transparent">
-              Book a Voice Demo
-            </Button>
+            <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+              <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
+                Download for Excel
+              </Button>
+            </Link>
+            <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+              <Button size="lg" variant="outline" className="bg-transparent">
+                Book a Voice Demo
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

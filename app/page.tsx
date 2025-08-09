@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -97,15 +98,19 @@ export default function HomePage() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white"
-            >
-              Download for Mac
-            </Button>
-            <Button size="lg" variant="outline">
-              Download for Windows
-            </Button>
+            <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+              <Button
+                size="lg"
+                className="bg-red-600 hover:bg-red-700 text-white"
+              >
+                Download for Mac
+              </Button>
+            </Link>
+            <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+              <Button size="lg" variant="outline">
+                Download for Windows
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -437,7 +442,11 @@ export default function HomePage() {
                       <td className="p-4">
                         <strong>Enterprise</strong>
                       </td>
-                      <td className="p-4">Let’s talk</td>
+                      <td className="p-4">
+                        <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank" className="hover:text-red-600 transition-colors">
+                          Let’s talk
+                        </Link>
+                      </td>
                       <td className="p-4">
                         Voice SSO, call-record retention, custom LLM
                       </td>
@@ -590,12 +599,14 @@ export default function HomePage() {
             Ready to talk <strong>and</strong> get answers—no copy-paste
             required?
           </h2>
-          <Button
-            size="lg"
-            className="bg-white text-red-600 hover:bg-gray-200"
-          >
-            Download Free
-          </Button>
+          <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+            <Button
+              size="lg"
+              className="bg-white text-red-600 hover:bg-gray-200"
+            >
+              Download Free
+            </Button>
+          </Link>
           <p className="mt-2 text-sm text-gray-300">
             Voice AI in under 60 seconds.
           </p>

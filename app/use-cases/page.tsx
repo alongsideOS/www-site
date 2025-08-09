@@ -104,12 +104,16 @@ export default function UseCasesPage() {
               tools. Whisper to your workflow. Get instant answers without breaking eye contact with your customer.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
-                Try Voice Now
-              </Button>
-              <Button size="lg" variant="outline">
-                See Live Demo
-              </Button>
+              <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+                <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
+                  Try Voice Now
+                </Button>
+              </Link>
+              <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+                <Button size="lg" variant="outline">
+                  See Live Demo
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -239,12 +243,16 @@ export default function UseCasesPage() {
                 />
               </div>
               <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
                 <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
                   Start Talking
                 </Button>
+              </Link>
+              <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
                 <Button size="lg" variant="outline">
                   Book a Voice Demo
                 </Button>
+              </Link>
               </div>
             </section>
           </main>
@@ -315,8 +323,12 @@ function ReasonCard({ title, body }: { title: string; body: string }) {
 function CTAInline() {
   return (
     <div className="flex flex-col sm:flex-row gap-3 mt-5">
-      <Button className="bg-red-600 hover:bg-red-700 focus:ring-red-500">Speak a Prompt</Button>
-      <Button variant="outline">See a Sales/Support Demo</Button>
+      <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+        <Button className="bg-red-600 hover:bg-red-700 focus:ring-red-500">Speak a Prompt</Button>
+      </Link>
+      <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+        <Button variant="outline">See a Sales/Support Demo</Button>
+      </Link>
     </div>
   )
 }

@@ -30,9 +30,11 @@ export default function Header() {
           >
             FAQ
           </Link>
-          <Button variant="outline" size="sm">
-            Sign In
-          </Button>
+          <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+            <Button variant="outline" size="sm">
+              Sign In
+            </Button>
+          </Link>
         </nav>
         {/* Mobile menu button */}
         <Button variant="ghost" size="sm" className="md:hidden">
