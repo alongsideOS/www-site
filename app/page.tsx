@@ -451,7 +451,7 @@ export default function HomePage() {
       </section>
 
       {/* Organization-Based Billing */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      <section id="billing" className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-2">
             Organization-Based Billing
