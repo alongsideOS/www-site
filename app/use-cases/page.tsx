@@ -80,12 +80,13 @@ export default function UseCasesPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Header />
 
       {/* Hero */}
-      <section className="py-10 md:py-16 border-b border-gray-100 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <section className="relative py-16 md:py-20 border-b border-gray-100 bg-gradient-to-br from-white via-red-50/20 to-rose-50/30">
+        <div className="absolute inset-0 bg-gradient-radial-red opacity-8"></div>
+        <div className="relative z-10 container mx-auto px-4 max-w-7xl">
           <div className="mb-6">
             <Link
               href="/"
@@ -96,21 +97,21 @@ export default function UseCasesPage() {
             </Link>
           </div>
           <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 leading-tight">
               Voice‑First AI that works alongside every team
             </h1>
-            <p className="text-lg md:text-xl text-gray-700 mt-4">
-              We’re not adding voice as an afterthought—we’re enabling voice as the primary interface. Talk to your
+            <p className="text-xl md:text-2xl text-gray-700 mt-6 font-medium">
+              We're not adding voice as an afterthought—we're enabling voice as the primary interface. Talk to your
               tools. Whisper to your workflow. Get instant answers without breaking eye contact with your customer.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 mt-6">
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
               <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-                <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
+                <Button size="lg" className="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold px-8 py-4 text-lg shadow-xl">
                   Try Voice Now
                 </Button>
               </Link>
               <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="font-bold px-8 py-4 text-lg">
                   See Live Demo
                 </Button>
               </Link>
@@ -120,166 +121,169 @@ export default function UseCasesPage() {
       </section>
 
       {/* Content + Right TOC */}
-      <div className="container mx-auto px-4 py-10 md:py-14 max-w-7xl">
-        <div className="flex gap-10">
-          {/* Main */}
-          <main className="flex-1 max-w-4xl">
-            {/* Overview */}
-            <section id="overview" className="scroll-mt-24 mb-14">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-1 rounded">
-                <Mic className="w-3 h-3" />
-                Voice‑First
-              </div>
-              <h2 className="text-2xl md:3xl lg:text-4xl font-bold text-gray-900 mt-3">
-                What “Voice‑First” means here
-              </h2>
-              <p className="text-gray-700 text-lg leading-relaxed mt-4">
-                alongsideOS listens securely to what matters—your calls, your meetings, your quick side
-                conversations—and responds in under a second with on‑point guidance, snippets, and next steps. No
-                tab‑hopping, no copy‑paste. Just talk and move forward.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                <FeaturePill icon={<Zap className="w-4 h-4" />} title="Realtime whisper" />
-                <FeaturePill icon={<ShieldCheck className="w-4 h-4" />} title="Private & compliant" />
-                <FeaturePill icon={<FileText className="w-4 h-4" />} title="Automatic logging" />
-              </div>
-            </section>
+      <div className="relative bg-gradient-to-br from-white via-rose-50/10 to-pink-50/20">
+        <div className="absolute inset-0 bg-gradient-radial-rose opacity-6"></div>
+        <div className="relative z-10 container mx-auto px-4 py-16 md:py-20 max-w-7xl">
+          <div className="flex gap-12">
+            {/* Main */}
+            <main className="flex-1 max-w-4xl">
+              {/* Overview */}
+              <section id="overview" className="scroll-mt-24 mb-16">
+                <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-red-700 bg-red-50/80 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-100">
+                  <Mic className="w-4 h-4" />
+                  Voice‑First
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mt-4">
+                  What "Voice‑First" means here
+                </h2>
+                <p className="text-gray-700 text-xl leading-relaxed mt-6 font-medium">
+                  alongsideOS listens securely to what matters—your calls, your meetings, your quick side
+                  conversations—and responds in under a second with on‑point guidance, snippets, and next steps. No
+                  tab‑hopping, no copy‑paste. Just talk and move forward.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                  <FeaturePill icon={<Zap className="w-5 h-5 text-red-600" />} title="Realtime whisper" />
+                  <FeaturePill icon={<ShieldCheck className="w-5 h-5 text-rose-600" />} title="Private & compliant" />
+                  <FeaturePill icon={<FileText className="w-5 h-5 text-pink-600" />} title="Automatic logging" />
+                </div>
+              </section>
 
-            {/* Sales */}
-            <section id="sales" className="scroll-mt-24 mb-14">
-              <SectionHeader
-                icon={<PhoneCall className="w-5 h-5 text-gray-700" />}
-                title="Sales — voice that closes the gap"
-                accent="Speak, sell, and stay present."
-              />
-              <p className="text-gray-700 leading-relaxed mt-3">
-                Turn every rep into your best closer. alongsideOS quietly listens to discovery and demo calls, then
-                delivers voice‑triggered prompts and crisp answers—exactly when objections surface.
-              </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                <li>Whisper‑mode objection handling with source‑linked answers</li>
-                <li>Push‑to‑talk shortcuts for pricing, integrations, and ROI stories</li>
-                <li>Next‑step nudges and auto‑logged follow‑ups in your CRM</li>
-              </ul>
-              <CTAInline />
-            </section>
-
-            {/* Support */}
-            <section id="support" className="scroll-mt-24 mb-14">
-              <SectionHeader
-                icon={<Headphones className="w-5 h-5 text-gray-700" />}
-                title="Support — voice that resolves faster"
-                accent="Respond confidently, out loud."
-              />
-              <p className="text-gray-700 leading-relaxed mt-3">
-                For live chats, phone queues, or screen‑shares, agents get instant, spoken guidance: policies, runbooks,
-                and steps tailored to the situation. The AI keeps pace with the customer’s voice.
-              </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                <li>Voice‑activated runbooks and troubleshooting trees</li>
-                <li>Policy‑aware guidance with compliance guardrails</li>
-                <li>Automatic case notes and resolution summaries</li>
-              </ul>
-              <CTAInline />
-            </section>
-
-            {/* Recruiting */}
-            <section id="recruiting" className="scroll-mt-24 mb-14">
-              <SectionHeader
-                icon={<Users className="w-5 h-5 text-gray-700" />}
-                title="Recruiting — voice that uncovers signal"
-                accent="Stay in the conversation; let AI take the notes."
-              />
-              <p className="text-gray-700 leading-relaxed mt-3">
-                alongsideOS listens for competencies, red flags, and highlights in real time, surfacing voice prompts to
-                dig deeper—while drafting structured feedback and next steps as you talk.
-              </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                <li>Live voice prompts tailored to role competencies</li>
-                <li>Summaries in STAR format, generated as you speak</li>
-                <li>ATS‑ready notes filed automatically after the call</li>
-              </ul>
-              <CTAInline />
-            </section>
-
-            {/* Consulting */}
-            <section id="consulting" className="scroll-mt-24 mb-14">
-              <SectionHeader
-                icon={<Briefcase className="w-5 h-5 text-gray-700" />}
-                title="Consulting — voice that moves workshops"
-                accent="Facilitate. Decide. Document—by voice."
-              />
-              <p className="text-gray-700 leading-relaxed mt-3">
-                Workshops and exec stand‑ups move faster when answers arrive at the speed of conversation. Ask for data
-                pulls, frameworks, or next‑step drafts without leaving the room or the whiteboard.
-              </p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2 mt-4">
-                <li>Voice‑triggered frameworks and decision templates</li>
-                <li>Instant transcripts with action items and owners</li>
-                <li>Client‑ready summaries delivered before the meeting ends</li>
-              </ul>
-              <CTAInline />
-            </section>
-
-            {/* Why Voice-First */}
-            <section id="why-voice" className="scroll-mt-24 mb-2">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-1 rounded">
-                <Mic className="w-3 h-3" />
-                Voice‑First
-              </div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-3">Why we’re voice‑first</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
-                <ReasonCard
-                  title="Presence over process"
-                  body="When you’re face‑to‑face—or voice‑to‑voice—typing is friction. Talking keeps you with the customer while AI does the heavy lifting."
+              {/* Sales */}
+              <section id="sales" className="scroll-mt-24 mb-16">
+                <SectionHeader
+                  icon={<PhoneCall className="w-5 h-5 text-red-600" />}
+                  title="Sales — voice that closes the gap"
+                  accent="Speak, sell, and stay present."
                 />
-                <ReasonCard
-                  title="Speed to clarity"
-                  body="Push‑to‑talk prompts deliver the right snippet in under a second, so momentum never breaks."
-                />
-                <ReasonCard
-                  title="Trust through compliance"
-                  body="Guardrails keep answers policy‑safe and audit‑ready, from discovery to support escalations."
-                />
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-                <Button size="lg" className="bg-red-600 hover:bg-red-700 focus:ring-red-500">
-                  Start Talking
-                </Button>
-              </Link>
-              <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-                <Button size="lg" variant="outline">
-                  Book a Voice Demo
-                </Button>
-              </Link>
-              </div>
-            </section>
-          </main>
+                <p className="text-gray-700 text-lg leading-relaxed mt-4">
+                  Turn every rep into your best closer. alongsideOS quietly listens to discovery and demo calls, then
+                  delivers voice‑triggered prompts and crisp answers—exactly when objections surface.
+                </p>
+                <ul className="list-disc list-inside text-gray-700 space-y-3 mt-6 text-lg">
+                  <li>Whisper‑mode objection handling with source‑linked answers</li>
+                  <li>Push‑to‑talk shortcuts for pricing, integrations, and ROI stories</li>
+                  <li>Next‑step nudges and auto‑logged follow‑ups in your CRM</li>
+                </ul>
+                <CTAInline />
+              </section>
 
-          {/* Right Sidebar TOC */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-24">
-              <h3 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">On this page</h3>
-              <nav className="space-y-1">
-                {sections.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => scrollToSection(s.id)}
-                    aria-current={activeSection === s.id ? "true" : "false"}
-                    className={`w-full flex items-center gap-2 text-left text-sm py-2 px-3 rounded-md transition-colors ${
-                      activeSection === s.id
-                        ? "bg-red-50 text-red-600 border-l-2 border-red-600"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                    }`}
-                  >
-                    {s.icon}
-                    <span>{s.title}</span>
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </aside>
+              {/* Support */}
+              <section id="support" className="scroll-mt-24 mb-16">
+                <SectionHeader
+                  icon={<Headphones className="w-5 h-5 text-rose-600" />}
+                  title="Support — voice that resolves faster"
+                  accent="Respond confidently, out loud."
+                />
+                <p className="text-gray-700 text-lg leading-relaxed mt-4">
+                  For live chats, phone queues, or screen‑shares, agents get instant, spoken guidance: policies, runbooks,
+                  and steps tailored to the situation. The AI keeps pace with the customer's voice.
+                </p>
+                <ul className="list-disc list-inside text-gray-700 space-y-3 mt-6 text-lg">
+                  <li>Voice‑activated runbooks and troubleshooting trees</li>
+                  <li>Policy‑aware guidance with compliance guardrails</li>
+                  <li>Automatic case notes and resolution summaries</li>
+                </ul>
+                <CTAInline />
+              </section>
+
+              {/* Recruiting */}
+              <section id="recruiting" className="scroll-mt-24 mb-16">
+                <SectionHeader
+                  icon={<Users className="w-5 h-5 text-pink-600" />}
+                  title="Recruiting — voice that uncovers signal"
+                  accent="Stay in the conversation; let AI take the notes."
+                />
+                <p className="text-gray-700 text-lg leading-relaxed mt-4">
+                  alongsideOS listens for competencies, red flags, and highlights in real time, surfacing voice prompts to
+                  dig deeper—while drafting structured feedback and next steps as you talk.
+                </p>
+                <ul className="list-disc list-inside text-gray-700 space-y-3 mt-6 text-lg">
+                  <li>Live voice prompts tailored to role competencies</li>
+                  <li>Summaries in STAR format, generated as you speak</li>
+                  <li>ATS‑ready notes filed automatically after the call</li>
+                </ul>
+                <CTAInline />
+              </section>
+
+              {/* Consulting */}
+              <section id="consulting" className="scroll-mt-24 mb-16">
+                <SectionHeader
+                  icon={<Briefcase className="w-5 h-5 text-red-600" />}
+                  title="Consulting — voice that moves workshops"
+                  accent="Facilitate. Decide. Document—by voice."
+                />
+                <p className="text-gray-700 text-lg leading-relaxed mt-4">
+                  Workshops and exec stand‑ups move faster when answers arrive at the speed of conversation. Ask for data
+                  pulls, frameworks, or next‑step drafts without leaving the room or the whiteboard.
+                </p>
+                <ul className="list-disc list-inside text-gray-700 space-y-3 mt-6 text-lg">
+                  <li>Voice‑triggered frameworks and decision templates</li>
+                  <li>Instant transcripts with action items and owners</li>
+                  <li>Client‑ready summaries delivered before the meeting ends</li>
+                </ul>
+                <CTAInline />
+              </section>
+
+              {/* Why Voice-First */}
+              <section id="why-voice" className="scroll-mt-24 mb-4">
+                <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-red-700 bg-red-50/80 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-100">
+                  <Mic className="w-4 h-4" />
+                  Voice‑First
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mt-4">Why we're voice‑first</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                  <ReasonCard
+                    title="Presence over process"
+                    body="When you're face‑to‑face—or voice‑to‑voice—typing is friction. Talking keeps you with the customer while AI does the heavy lifting."
+                  />
+                  <ReasonCard
+                    title="Speed to clarity"
+                    body="Push‑to‑talk prompts deliver the right snippet in under a second, so momentum never breaks."
+                  />
+                  <ReasonCard
+                    title="Trust through compliance"
+                    body="Guardrails keep answers policy‑safe and audit‑ready, from discovery to support escalations."
+                  />
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                  <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+                    <Button size="lg" className="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold px-8 py-4 text-lg shadow-xl">
+                      Start Talking
+                    </Button>
+                  </Link>
+                  <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
+                    <Button size="lg" variant="outline" className="font-bold px-8 py-4 text-lg">
+                      Book a Voice Demo
+                    </Button>
+                  </Link>
+                </div>
+              </section>
+            </main>
+
+            {/* Right Sidebar TOC */}
+            <aside className="hidden lg:block w-72 flex-shrink-0">
+              <div className="sticky top-24">
+                <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">On this page</h3>
+                <nav className="space-y-2">
+                  {sections.map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => scrollToSection(s.id)}
+                      aria-current={activeSection === s.id ? "true" : "false"}
+                      className={`w-full flex items-center gap-3 text-left text-sm py-3 px-4 rounded-xl transition-colors font-medium ${
+                        activeSection === s.id
+                          ? "bg-red-50/80 backdrop-blur-sm text-red-700 border-l-4 border-red-600 shadow-lg"
+                          : "text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 hover:backdrop-blur-sm"
+                      }`}
+                    >
+                      {s.icon}
+                      <span>{s.title}</span>
+                    </button>
+                  ))}
+                </nav>
+              </div>
+            </aside>
+          </div>
         </div>
       </div>
 
@@ -291,7 +295,7 @@ export default function UseCasesPage() {
 /* Inline helper components */
 function FeaturePill({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
-    <div className="flex items-center gap-2 px-3 py-2 rounded-full border border-gray-200 bg-white text-sm text-gray-700">
+    <div className="flex items-center gap-3 px-5 py-3 rounded-xl border border-gray-200/50 bg-white/70 backdrop-blur-sm text-lg text-gray-800 font-medium shadow-lg">
       {icon}
       <span>{title}</span>
     </div>
@@ -301,33 +305,33 @@ function FeaturePill({ icon, title }: { icon: React.ReactNode; title: string }) 
 function SectionHeader({ icon, title, accent }: { icon: React.ReactNode; title: string; accent: string }) {
   return (
     <div>
-      <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-600 bg-gray-100 px-2 py-1 rounded">
+      <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-gray-700 bg-gray-100/80 backdrop-blur-sm px-3 py-2 rounded-lg">
         {icon}
         <span>Voice‑First AI</span>
       </div>
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mt-3">{title}</h2>
-      <p className="text-red-700 font-medium mt-1">{accent}</p>
+      <h2 className="text-3xl md:text-4xl font-black text-gray-900 mt-4">{title}</h2>
+      <p className="text-red-700 font-bold mt-2 text-lg">{accent}</p>
     </div>
   )
 }
 
 function ReasonCard({ title, body }: { title: string; body: string }) {
   return (
-    <div className="border rounded-lg p-5 bg-white">
-      <h4 className="font-semibold text-gray-900">{title}</h4>
-      <p className="text-gray-700 mt-2 text-sm leading-relaxed">{body}</p>
+    <div className="border border-gray-200/50 rounded-2xl p-6 bg-white/70 backdrop-blur-sm shadow-xl">
+      <h4 className="font-bold text-gray-900 text-lg">{title}</h4>
+      <p className="text-gray-700 mt-3 text-base leading-relaxed">{body}</p>
     </div>
   )
 }
 
 function CTAInline() {
   return (
-    <div className="flex flex-col sm:flex-row gap-3 mt-5">
+    <div className="flex flex-col sm:flex-row gap-4 mt-8">
       <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-        <Button className="bg-red-600 hover:bg-red-700 focus:ring-red-500">Speak a Prompt</Button>
+        <Button className="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold px-6 py-3 shadow-lg">Speak a Prompt</Button>
       </Link>
       <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-        <Button variant="outline">See a Sales/Support Demo</Button>
+        <Button variant="outline" className="font-bold px-6 py-3">See a Sales/Support Demo</Button>
       </Link>
     </div>
   )
