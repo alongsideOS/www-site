@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -16,9 +19,16 @@ import {
   Clock,
   TrendingUp,
   Award,
+  Menu,
+  X,
+  FileText,
+  RotateCw,
+  Palette,
 } from "lucide-react"
 
 export default function HomePage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
   const xmlCode = `<system_prompt version="3.0">
   
   <!-- IDENTITY -->
@@ -68,7 +78,9 @@ export default function HomePage() {
   <speakers>
     <me>User being helped</me>
     <them>Other person</them>
-    <correction_rule>If context doesn't make sense, speakers are likely mislabeled - infer correct speaker</correction_rule>
+    <correction_rule>
+      If context doesn't make sense, speakers are likely mislabeled - infer correct speaker
+    </correction_rule>
   </speakers>
 
   <!-- SPECIALIZED RESPONSES -->
@@ -146,8 +158,54 @@ export default function HomePage() {
                 Request Demo
               </Button>
             </div>
+            
+            {/* Mobile menu toggle */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-foreground"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </Button>
+            </div>
           </div>
         </div>
+        
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border z-50">
+            <div className="px-6 py-4 space-y-4">
+              <a
+                href="#features"
+                className="block text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Features
+              </a>
+              <a
+                href="#enterprise"
+                className="block text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Enterprise
+              </a>
+              <a
+                href="#security"
+                className="block text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Security
+              </a>
+              <div className="pt-2">
+                <Button variant="outline" size="sm" className="w-full">
+                  Request Demo
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -246,15 +304,15 @@ export default function HomePage() {
       <section id="features" className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <p className="text-blue-500 text-lg font-medium mb-4">Enterprise AI customization</p>
+            <p className="text-foreground text-lg font-medium mb-4">Enterprise AI customization</p>
             <h2 className="text-4xl md:text-5xl font-light text-balance leading-tight mb-16">
               The Customization Suite turns your knowledge into voice-powered intelligence.
             </h2>
 
             <div className="space-y-12">
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl">📚</span>
+                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Content Injection</h3>
@@ -266,8 +324,8 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl">🎯</span>
+                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                  <Target className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Role-Aware Delivery</h3>
@@ -279,8 +337,8 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl">🔒</span>
+                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Guardrails & Governance</h3>
@@ -292,8 +350,8 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl">⚡</span>
+                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Real-Time Intelligence</h3>
@@ -305,8 +363,8 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl">🔄</span>
+                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                  <RotateCw className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Continuous Learning</h3>
@@ -318,8 +376,8 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-xl">🎨</span>
+                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                  <Palette className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Precision Targeting</h3>
@@ -404,7 +462,8 @@ export default function HomePage() {
             <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Features for Every Role</h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16">
             <div>
               <h3 className="text-2xl font-medium mb-8">For Teams</h3>
               <div className="space-y-6">
@@ -449,6 +508,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
@@ -462,8 +522,8 @@ export default function HomePage() {
           <div className="space-y-8">
             <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
-                  <Calendar className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center">
+                  <Calendar className="w-8 h-8 text-foreground" />
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">
@@ -481,8 +541,8 @@ export default function HomePage() {
 
             <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center">
-                  <Mic className="w-8 h-8 text-green-600" />
+                <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center">
+                  <Mic className="w-8 h-8 text-foreground" />
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">
@@ -500,8 +560,8 @@ export default function HomePage() {
 
             <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center">
-                  <Shield className="w-8 h-8 text-purple-600" />
+                <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center">
+                  <Shield className="w-8 h-8 text-foreground" />
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">

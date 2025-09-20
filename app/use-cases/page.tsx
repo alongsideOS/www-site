@@ -21,6 +21,8 @@ import {
   FileText,
   CheckCircle,
   Target,
+  Menu,
+  X,
 } from "lucide-react"
 
 type Section = {
@@ -39,6 +41,7 @@ const sections: Section[] = [
 ]
 
 export default function UseCasesPage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState<string>("overview")
 
   useEffect(() => {
@@ -106,8 +109,54 @@ export default function UseCasesPage() {
                 Request Demo
               </Button>
             </div>
+            
+            {/* Mobile menu toggle */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-foreground"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </Button>
+            </div>
           </div>
         </div>
+        
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-b border-border z-50">
+            <div className="px-6 py-4 space-y-4">
+              <a
+                href="/#features"
+                className="block text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Features
+              </a>
+              <a
+                href="/#enterprise"
+                className="block text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Enterprise
+              </a>
+              <a
+                href="/#security"
+                className="block text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Security
+              </a>
+              <div className="pt-2">
+                <Button variant="outline" size="sm" className="w-full">
+                  Request Demo
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero */}
