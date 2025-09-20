@@ -1,183 +1,603 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { CodeEditor } from "@/components/code-editor"
 import {
-  Eye,
-  Brain,
+  ArrowRight,
+  Mic,
   Shield,
   Users,
-  Code,
+  Zap,
   CheckCircle,
-  Mic,
+  Star,
+  Calendar,
   BarChart3,
-  TrendingDown,
-  AlertTriangle,
-  UserCheck,
-  DollarSign,
-  Play,
+  Target,
+  Clock,
+  TrendingUp,
+  Award,
 } from "lucide-react"
-import Link from "next/link"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 
 export default function HomePage() {
+  const xmlCode = `<system_prompt version="3.0">
+  
+  <!-- IDENTITY -->
+  <identity>
+    <name>Alongside</name>
+    <role>Live sales assistant analyzing conversations and screens in real-time</role>
+    <response_style>Direct, actionable, no fluff</response_style>
+  </identity>
+
+  <!-- RESPONSE DECISION TREE -->
+  <response_hierarchy>
+    
+    <priority level="1">
+      <trigger>Question detected (50%+ confidence)</trigger>
+      <action>Answer immediately</action>
+      <format>
+        - Headline (≤6 words)
+        - 2 key points (≤15 words each)
+        - Supporting details if needed
+      </format>
+    </priority>
+    
+    <priority level="2">
+      <trigger>Company/technical term in last 15 words</trigger>
+      <action>Define it</action>
+      <exclude>Common terms, already defined</exclude>
+    </priority>
+    
+    <priority level="3">
+      <trigger>Story/background shared without question</trigger>
+      <action>Suggest 1-3 follow-up questions</action>
+    </priority>
+    
+    <priority level="4">
+      <trigger>Sales objection detected</trigger>
+      <action>Counter with specific response tied to conversation</action>
+    </priority>
+    
+    <priority level="5">
+      <trigger>No action needed</trigger>
+      <action>Say "Not sure what you need help with right now"</action>
+    </priority>
+    
+  </response_hierarchy>
+
+  <!-- SPEAKER LABELS -->
+  <speakers>
+    <me>User being helped</me>
+    <them>Other person</them>
+    <correction_rule>If context doesn't make sense, speakers are likely mislabeled - infer correct speaker</correction_rule>
+  </speakers>
+
+  <!-- SPECIALIZED RESPONSES -->
+  <response_types>
+    
+    <technical>
+      <rule>Start with code immediately</rule>
+      <rule>Comment every line</rule>
+      <rule>Add complexity analysis after</rule>
+    </technical>
+    
+    <behavioral>
+      <rule>Use STAR format (Situation, Task, Action, Result)</rule>
+      <rule>Include specific metrics</rule>
+      <rule>Never invent user details</rule>
+    </behavioral>
+    
+    <objection_handling>
+      <rule>State objection type</rule>
+      <rule>Give specific counter using conversation context</rule>
+      <rule>Never use generic scripts</rule>
+    </objection_handling>
+    
+  </response_types>
+
+  <!-- FORMATTING -->
+  <format_rules>
+    <rule>NO headers (#, ##)</rule>
+    <rule>NO pronouns</rule>
+    <rule>NO meta-phrases ("let me help", "I see that")</rule>
+    <rule>Bold for emphasis</rule>
+    <rule>LaTeX for math ($...$)</rule>
+    <rule>Escape currency (\\$100)</rule>
+  </format_rules>
+
+  <!-- SALES CAPABILITIES -->
+  <sales_features>
+    <real_time>Objection handling, battle cards, talk tracks</real_time>
+    <automation>Follow-up emails, CRM sync, call summaries</automation>
+    <analytics>Clarity, conviction, engagement tracking</analytics>
+  </sales_features>
+
+  <!-- HARD CONSTRAINTS -->
+  <never>
+    <rule>Never summarize unless asked</rule>
+    <rule>Never give unsolicited advice</rule>
+    <rule>Never use pleasantries</rule>
+    <rule>Never say "screenshot" - say "the screen"</rule>
+    <rule>Never give >3 suggestions</rule>
+  </never>
+
+</system_prompt>`
+
   return (
-    <div className="min-h-screen">
-      <Header />
-
-      {/* Hero */}
-      <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-radial-red opacity-15"></div>
-        <div className="absolute inset-0 bg-gradient-radial-pink opacity-10"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 lg:py-40">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-8 border border-white/20">
-              <Mic className="w-4 h-4" />
-              Voice-First AI Enablement
+    <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <nav className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-3">
+              <img src="/logo.png" alt="AlongsideOS" className="w-8 h-8" />
+              <span className="text-xl font-semibold text-foreground">AlongsideOS</span>
             </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
+                Features
+              </a>
+              <a href="#enterprise" className="text-muted-foreground hover:text-foreground transition-colors">
+                Enterprise
+              </a>
+              <a href="#security" className="text-muted-foreground hover:text-foreground transition-colors">
+                Security
+              </a>
+              <Button variant="outline" size="sm">
+                Request Demo
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-            <h1 className="text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-300 leading-tight mb-8">
-              AI that works
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-rose-400 to-pink-400">alongside you</span>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-32">
+          <div className="text-center max-w-4xl mx-auto">
+            <Badge variant="secondary" className="mb-6">
+              Voice-First AI Enablement
+            </Badge>
+            <h1 className="text-5xl md:text-7xl font-light text-balance leading-tight mb-8">
+              Your Knowledge. <span className="font-medium">Your AI.</span> Delivered Through Voice.
             </h1>
 
-            <div className="max-w-2xl mb-12">
-              <p className="text-2xl text-white/90 mb-6 font-medium">Deploy voice-first AI in days, not quarters.</p>
-              <p className="text-xl text-white/70">
-                Works for teams of 1. Scales to thousands. No copy-paste, no context switching.
+            <div className="space-y-6 mb-12">
+              <p className="text-2xl font-medium text-balance leading-relaxed">
+                AlongsideOS is the <span className="text-primary">desktop voice assistant</span> that adapts entirely to
+                your enterprise.
+              </p>
+
+              <div className="flex items-center justify-center gap-4 text-lg text-muted-foreground">
+                <span className="hidden md:block w-12 h-px bg-border"></span>
+                <span className="text-center">Unlike generic AI tools</span>
+                <span className="hidden md:block w-12 h-px bg-border"></span>
+              </div>
+
+              <p className="text-xl text-balance leading-relaxed max-w-3xl mx-auto">
+                AlongsideOS empowers your teams <strong className="text-foreground">during calls</strong> with real-time
+                answers, prompts, and definitions — all customized with your{" "}
+                <span className="bg-primary/10 text-primary px-2 py-1 rounded-md font-medium">
+                  playbooks, policies, and product truth
+                </span>
+                .
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
-              <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-                <Button size="lg" className="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold px-8 py-4 text-lg shadow-2xl backdrop-blur-sm border border-white/20">
-                  <Play className="w-5 h-5 mr-2" />
-                  Start Free
-                </Button>
-              </Link>
-              <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-                <Button size="lg" className="bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20 font-bold px-8 py-4 text-lg shadow-xl">
-                  Book Demo
-                </Button>
-              </Link>
-            </div>
-
-            <div className="text-lg text-white/60 font-medium">Trusted by teams at 50+ companies</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Problem Statement */}
-      <section className="relative bg-gradient-to-br from-red-50/30 via-rose-50/20 to-pink-50/30 py-24">
-        <div className="absolute inset-0 bg-gradient-radial-rose opacity-8"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="max-w-3xl mb-20 text-center mx-auto">
-            <h2 className="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 mb-8">The AI enablement gap</h2>
-            <p className="text-2xl text-gray-800 font-medium">Current AI tools create more problems than they solve</p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-10">
-            <div className="bg-white/70 backdrop-blur-sm p-10 rounded-2xl border border-white/50 shadow-2xl">
-              <AlertTriangle className="w-10 h-10 text-red-600 mb-6" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Tool sprawl</h3>
-              <p className="text-lg text-gray-700 mb-4 font-medium">Copy-paste between apps kills momentum</p>
-              <p className="text-sm text-gray-600">Lost minutes per task, per user</p>
-            </div>
-
-            <div className="bg-white/70 backdrop-blur-sm p-10 rounded-2xl border border-white/50 shadow-2xl">
-              <Shield className="w-10 h-10 text-rose-600 mb-6" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Shadow AI risk</h3>
-              <p className="text-lg text-gray-700 mb-4 font-medium">Unvetted tools create compliance drift</p>
-              <p className="text-sm text-gray-600">Data leakage, policy violations</p>
-            </div>
-
-            <div className="bg-white/70 backdrop-blur-sm p-10 rounded-2xl border border-white/50 shadow-2xl">
-              <TrendingDown className="w-10 h-10 text-pink-600 mb-6" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Idle licenses</h3>
-              <p className="text-lg text-gray-700 mb-4 font-medium">Expensive seats that nobody opens</p>
-              <p className="text-sm text-gray-600">Shelfware budgets, low adoption</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="text-base px-8">
+                Request a Demo
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button variant="outline" size="lg" className="text-base px-8 bg-transparent">
+                Start Your Pilot
+              </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Solution */}
-      <section id="features" className="relative py-24 bg-gradient-to-br from-white via-red-50/20 to-rose-50/30">
-        <div className="absolute inset-0 bg-gradient-radial-red opacity-8"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="max-w-4xl mb-20 text-center mx-auto">
-            <h2 className="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 mb-8">AI that lives where work happens</h2>
-            <p className="text-2xl text-gray-800 font-medium">alongsideOS integrates with your existing tools</p>
+      {/* Why Voice AI Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Why Voice AI Enablement Matters</h2>
           </div>
-
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <div>
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-rose-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <Mic className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-3xl font-extrabold text-gray-900">Voice-First</h3>
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
+                <Clock className="w-8 h-8 text-foreground" />
               </div>
-              <p className="text-xl text-gray-700 mb-6 font-medium">Listens to your meetings without joining calls</p>
-              <p className="text-lg text-gray-600">
-                Instant answers on your screen or phone. Never appears on participant lists.
+              <h3 className="text-xl font-medium mb-4">Immediate</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Get answers while you speak — no post-call delays.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-gray-50/80 via-white to-red-50/40 p-10 rounded-2xl border border-white/50 shadow-2xl backdrop-blur-sm">
-              <div className="text-lg text-gray-700 mb-4 font-medium">Live demo</div>
-              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-gray-200/50 text-lg shadow-lg">
-                "What's the renewal risk for Acme Corp?"
-                <div className="mt-3 text-gray-600 font-medium">→ On-screen summary + next steps</div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
+                <Shield className="w-8 h-8 text-foreground" />
               </div>
+              <h3 className="text-xl font-medium mb-4">Unobtrusive</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Always in flow, no screen-switching, no disruption.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
+                <Zap className="w-8 h-8 text-foreground" />
+              </div>
+              <h3 className="text-xl font-medium mb-4">Empowering</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Voice amplifies your team's confidence in the moment.
+              </p>
             </div>
           </div>
+          <div className="text-center mt-16">
+            <blockquote className="text-xl text-muted-foreground italic max-w-3xl mx-auto">
+              AI is everywhere.{" "}
+              <strong className="text-foreground not-italic">
+                Enablement happens only when it's live, contextual, and customized.
+              </strong>
+            </blockquote>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <div className="bg-gradient-to-br from-gray-50/80 via-white to-rose-50/40 p-10 rounded-2xl border border-white/50 shadow-2xl backdrop-blur-sm lg:order-1">
-              <div className="text-lg text-gray-700 mb-4 font-medium">Excel integration</div>
-              <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-gray-200/50 text-lg shadow-lg">
-                Hover cell → "Fix this formula"
-                <div className="mt-3 text-gray-600 font-medium">→ Safe rewrite with explanation</div>
-              </div>
-            </div>
-            <div className="lg:order-2">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-rose-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <Eye className="w-8 h-8 text-white" />
+      {/* Customization Suite */}
+      <section id="features" className="py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-blue-500 text-lg font-medium mb-4">Enterprise AI customization</p>
+            <h2 className="text-4xl md:text-5xl font-light text-balance leading-tight mb-16">
+              The Customization Suite turns your knowledge into voice-powered intelligence.
+            </h2>
+
+            <div className="space-y-12">
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">📚</span>
                 </div>
-                <h3 className="text-3xl font-extrabold text-gray-900">Screen-Aware</h3>
+                <div className="flex-1">
+                  <h3 className="text-xl font-medium mb-3">Content Injection</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Upload product docs, policies, SLAs, SOPs, glossaries, and risk frameworks. AlongsideOS turns them
+                    into searchable, speakable, instantly retrievable intelligence.
+                  </p>
+                </div>
               </div>
-              <p className="text-xl text-gray-700 mb-6 font-medium">Knows what's in front of you</p>
-              <p className="text-lg text-gray-600">Cells, CRM records, docs—answers are contextually relevant.</p>
+
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🎯</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-medium mb-3">Role-Aware Delivery</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Sales, Engineers, Legal, Support — each role gets tailored prompts and definitions. AlongsideOS
+                    ensures relevance by matching content to team context.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🔒</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-medium mb-3">Guardrails & Governance</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Admins set guardrails for what's approved, blocked, or flagged. Built-in analytics track prompt
+                    adoption, accuracy, and compliance alignment.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">⚡</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-medium mb-3">Real-Time Intelligence</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Context-aware suggestions surface automatically during calls. AlongsideOS listens for key moments
+                    and delivers the right prompt at the right time.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🔄</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-medium mb-3">Continuous Learning</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Your content evolves, and so does AlongsideOS. Automatic content refresh cycles ensure your team
+                    always has the latest information.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl">🎨</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-medium mb-3">Precision Targeting</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Not every prompt is for every person. AlongsideOS delivers role-specific, situation-aware content
+                    that matches your team's exact needs.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Code Example */}
+          <div className="max-w-4xl mx-auto mt-16">
+            <h4 className="text-lg font-medium mb-6">Example — A Complete System Prompt in XML:</h4>
+            <CodeEditor 
+              code={xmlCode} 
+              language="xml" 
+              title="alongside-system-prompt-v3.xml" 
+              collapsible={true}
+              previewLines={8}
+            />
+            <p className="text-muted-foreground mt-6 italic text-center">
+              This is how your team's knowledge becomes a <strong>sophisticated AI assistant</strong> during live calls.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Delivered Through Voice */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Delivered Through Voice</h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Customization powers the engine. <strong>Voice delivers it in the moment of need.</strong>
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                <Zap className="w-6 h-6 text-foreground" />
+              </div>
+              <div>
+                <h3 className="text-xl font-medium mb-4">Active Prompt</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Context-aware suggestions surface automatically in-call.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                <Users className="w-6 h-6 text-foreground" />
+              </div>
+              <div>
+                <h3 className="text-xl font-medium mb-4">Team Prompts</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  A shared prompt library, curated by admins, reusable across teams.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                <Target className="w-6 h-6 text-foreground" />
+              </div>
+              <div>
+                <h3 className="text-xl font-medium mb-4">Instant Lookups</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Ask for policies, definitions, or competitive intel by voice and get answers on the spot.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features for Every Role */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Features for Every Role</h2>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-pink-600 to-red-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <Brain className="w-8 h-8 text-white" />
+              <h3 className="text-2xl font-medium mb-8">For Teams</h3>
+              <div className="space-y-6">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
+                  <span>Trigger prompts by voice or click</span>
                 </div>
-                <h3 className="text-3xl font-extrabold text-gray-900">Supermemory</h3>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
+                  <span>Save and star useful answers</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
+                  <span>Propose new prompts to the library</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
+                  <span>Share snippets with peers</span>
+                </div>
               </div>
-              <p className="text-xl text-gray-700 mb-6 font-medium">Your org's knowledge, instantly accessible</p>
-              <p className="text-lg text-gray-600">Notion pages, PDFs, wikis, playbooks. Source-linked answers.</p>
             </div>
-            <div className="bg-gradient-to-br from-gray-50/80 via-white to-pink-50/40 p-10 rounded-2xl border border-white/50 shadow-2xl backdrop-blur-sm">
-              <div className="text-lg text-gray-700 mb-6 font-medium">Knowledge base</div>
-              <div className="space-y-3">
-                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-gray-200/50 text-lg flex items-center gap-3 shadow-lg">
-                  <div className="w-3 h-3 bg-red-500 rounded-full shadow-lg"></div>
-                  Sales playbook.pdf
+
+            <div>
+              <h3 className="text-2xl font-medium mb-8">For Admins</h3>
+              <div className="space-y-6">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
+                  <span>Manage roles, permissions, and access</span>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-gray-200/50 text-lg flex items-center gap-3 shadow-lg">
-                  <div className="w-3 h-3 bg-rose-500 rounded-full shadow-lg"></div>
-                  Support KB (Notion)
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
+                  <span>Approve/reject prompt suggestions</span>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-gray-200/50 text-lg flex items-center gap-3 shadow-lg">
-                  <div className="w-3 h-3 bg-pink-500 rounded-full shadow-lg"></div>
-                  Company wiki
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
+                  <span>Configure compliance guardrails</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
+                  <span>Audit usage and track analytics</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Integrations */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Integrated Into Your Workflow</h2>
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
+                  <Calendar className="w-8 h-8 text-blue-600" />
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-2xl font-medium mb-4">Google Calendar Integration</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Pre-loads meeting context (title, attendees, links) so AlongsideOS is ready the moment a call begins.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <Badge variant="secondary" className="text-sm px-4 py-2">
+                  Auto-sync
+                </Badge>
+              </div>
+            </div>
+
+            <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center">
+                  <Mic className="w-8 h-8 text-green-600" />
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-2xl font-medium mb-4">Conferencing Tools</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Works seamlessly alongside Zoom, Teams, Meet, and others.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <Badge variant="secondary" className="text-sm px-4 py-2">
+                  Universal
+                </Badge>
+              </div>
+            </div>
+
+            <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center">
+                  <Shield className="w-8 h-8 text-purple-600" />
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h3 className="text-2xl font-medium mb-4">Enterprise Identity</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Secure SSO and role mapping, managed by admins.
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                <Badge variant="secondary" className="text-sm px-4 py-2">
+                  SSO Ready
+                </Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Rollout & Adoption */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Rollout & Adoption</h2>
+            <p className="text-xl text-muted-foreground">A structured approach to enterprise success</p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 top-16 bottom-16 w-0.5 bg-border hidden md:block"></div>
+
+            <div className="space-y-16">
+              <div className="flex flex-col md:flex-row items-start gap-8">
+                <div className="flex-shrink-0 relative">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl">
+                    1
+                  </div>
+                  <div className="absolute -top-2 -left-2 w-20 h-20 border-2 border-primary/20 rounded-full animate-pulse"></div>
+                </div>
+                <div className="flex-1 bg-gradient-to-r from-primary/5 to-transparent rounded-2xl p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🚀</span>
+                    <h3 className="text-2xl font-medium">Team Kickoff</h3>
+                  </div>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    Structured kickoff sessions ensure high adoption from day one. Teams get hands-on guidance, tailored
+                    to their roles.
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    <Badge variant="outline">Role-specific training</Badge>
+                    <Badge variant="outline">Hands-on guidance</Badge>
+                    <Badge variant="outline">Day 1 ready</Badge>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-start gap-8">
+                <div className="flex-shrink-0 relative">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl">
+                    2
+                  </div>
+                </div>
+                <div className="flex-1 bg-gradient-to-r from-blue-500/5 to-transparent rounded-2xl p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🛠</span>
+                    <h3 className="text-2xl font-medium">Admin Training</h3>
+                  </div>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    Admins learn to configure prompts, manage roles, enforce compliance, and measure outcomes.
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    <Badge variant="outline">Prompt configuration</Badge>
+                    <Badge variant="outline">Role management</Badge>
+                    <Badge variant="outline">Compliance setup</Badge>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-start gap-8">
+                <div className="flex-shrink-0 relative">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl">
+                    3
+                  </div>
+                </div>
+                <div className="flex-1 bg-gradient-to-r from-green-500/5 to-transparent rounded-2xl p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">📈</span>
+                    <h3 className="text-2xl font-medium">Ongoing Enablement</h3>
+                  </div>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    Content refresh cycles and analytics keep the Customization Suite aligned with business changes.
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    <Badge variant="outline">Content refresh</Badge>
+                    <Badge variant="outline">Analytics tracking</Badge>
+                    <Badge variant="outline">Business alignment</Badge>
+                  </div>
                 </div>
               </div>
             </div>
@@ -185,270 +605,295 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Use Cases Grid */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 py-24">
-        <div className="absolute inset-0 bg-gradient-radial-rose opacity-15"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="max-w-4xl mb-20 text-center mx-auto">
-            <h2 className="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-300 mb-8">Built for every team</h2>
-            <p className="text-2xl text-white/80 font-medium">Immediate value across all functions</p>
+      {/* Use Cases */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Where Enterprises Use AlongsideOS</h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-10">
-            {[
-              {
-                icon: <BarChart3 className="w-8 h-8 text-white" />,
-                title: "Sales & RevOps",
-                wins: "Live objection handling",
-                replaces: "Idle ChatGPT seats",
-                color: "red",
-              },
-              {
-                icon: <Users className="w-8 h-8 text-white" />,
-                title: "Support & Success",
-                wins: "Policy-correct answers",
-                replaces: "Manual call notes",
-                color: "rose",
-              },
-              {
-                icon: <Shield className="w-8 h-8 text-white" />,
-                title: "Compliance & Risk",
-                wins: "Real-time guardrails",
-                replaces: "Manual QA sampling",
-                color: "pink",
-              },
-              {
-                icon: <Code className="w-8 h-8 text-white" />,
-                title: "Engineering",
-                wins: "Error explanations",
-                replaces: "Context-less chat",
-                color: "red",
-              },
-              {
-                icon: <DollarSign className="w-8 h-8 text-white" />,
-                title: "Finance & Ops",
-                wins: "Spreadsheet modeling",
-                replaces: "Ad-hoc analyst hours",
-                color: "rose",
-              },
-              {
-                icon: <UserCheck className="w-8 h-8 text-white" />,
-                title: "People & L&D",
-                wins: "Interview assistance",
-                replaces: "Inconsistent processes",
-                color: "pink",
-              },
-            ].map((item, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 shadow-2xl">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-14 h-14 bg-gradient-to-br from-${item.color}-600 to-${item.color}-700 rounded-2xl flex items-center justify-center shadow-xl`}>
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <div className="text-lg font-bold text-white mb-2">Day-1 wins</div>
-                    <div className="text-lg text-white/80">{item.wins}</div>
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-white mb-2">Replaces</div>
-                    <div className="text-lg text-white/80">{item.replaces}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How it Works */}
-      <section className="relative py-24 bg-gradient-to-br from-rose-50/20 via-white to-pink-50/30">
-        <div className="absolute inset-0 bg-gradient-radial-pink opacity-8"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="max-w-4xl mb-20 text-center mx-auto">
-            <h2 className="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 mb-8">Three steps to deployment</h2>
-            <p className="text-2xl text-gray-800 font-medium">From pilot to scale in weeks, not months</p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-red-600 to-rose-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
-                <span className="text-3xl font-black text-white">1</span>
-              </div>
-              <h3 className="text-2xl font-extrabold text-gray-900 mb-6">Pilot (Week 1-2)</h3>
-              <ul className="text-gray-700 space-y-3 text-left text-lg">
-                <li>• 10-25 users</li>
-                <li>• Single knowledge domain</li>
-                <li>• Basic guardrails</li>
-              </ul>
+              <TrendingUp className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium mb-2">Win Sales Deals</h3>
+              <p className="text-sm text-muted-foreground">Handle technical and pricing objections live.</p>
             </div>
-
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-rose-600 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
-                <span className="text-3xl font-black text-white">2</span>
-              </div>
-              <h3 className="text-2xl font-extrabold text-gray-900 mb-6">Expand (Month 1-2)</h3>
-              <ul className="text-gray-700 space-y-3 text-left text-lg">
-                <li>• Sales/CS teams</li>
-                <li>• CRM integration</li>
-                <li>• Mobile mirror</li>
-              </ul>
+              <Shield className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium mb-2">Stay Compliant</h3>
+              <p className="text-sm text-muted-foreground">Keep regulated answers aligned and safe.</p>
             </div>
-
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-pink-600 to-red-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
-                <span className="text-3xl font-black text-white">3</span>
-              </div>
-              <h3 className="text-2xl font-extrabold text-gray-900 mb-6">Scale (Quarter 1-2)</h3>
-              <ul className="text-gray-700 space-y-3 text-left text-lg">
-                <li>• Org-wide rollout</li>
-                <li>• Custom LLMs</li>
-                <li>• Advanced controls</li>
-              </ul>
+              <Users className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium mb-2">Accelerate Onboarding</h3>
+              <p className="text-sm text-muted-foreground">New hires learn directly in live calls.</p>
+            </div>
+            <div className="text-center">
+              <Target className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium mb-2">Elevate Support</h3>
+              <p className="text-sm text-muted-foreground">
+                Resolve issues faster with guided troubleshooting prompts.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Metrics */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 py-24">
-        <div className="absolute inset-0 bg-gradient-radial-red opacity-12"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="max-w-4xl mb-20 text-center mx-auto">
-            <h2 className="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-300 mb-8">Measurable business impact</h2>
-            <p className="text-2xl text-white/80 font-medium">Track ROI across every function</p>
+      {/* ROI / Outcomes */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Measurable Business Outcomes</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            {[
-              { metric: "Win rate", change: "↑ 23%", team: "Sales" },
-              { metric: "Resolution time", change: "↓ 40%", team: "Support" },
-              { metric: "Time to hire", change: "↓ 35%", team: "Recruiting" },
-              { metric: "Error rate", change: "↓ 60%", team: "Finance" },
-            ].map((item, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-center border border-white/20 shadow-2xl">
-                <div className="text-4xl lg:text-5xl font-black text-white mb-4">{item.change}</div>
-                <div className="text-xl font-bold text-white mb-2">{item.metric}</div>
-                <div className="text-lg text-white/70">{item.team}</div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <Clock className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium mb-2">Faster ramp</h3>
+              <p className="text-sm text-muted-foreground">reps customer-ready in days, not weeks</p>
+            </div>
+            <div className="text-center">
+              <TrendingUp className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium mb-2">Higher win rates</h3>
+              <p className="text-sm text-muted-foreground">live objection handling boosts confidence</p>
+            </div>
+            <div className="text-center">
+              <Shield className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium mb-2">Reduced risk</h3>
+              <p className="text-sm text-muted-foreground">approved answers only, in every call</p>
+            </div>
+            <div className="text-center">
+              <BarChart3 className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium mb-2">Stronger ROI</h3>
+              <p className="text-sm text-muted-foreground">enablement tied directly to your custom content</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">What Enterprises Say</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-muted/50 rounded-lg p-8">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
+                ))}
               </div>
-            ))}
+              <blockquote className="text-lg leading-relaxed mb-6">
+                "AlongsideOS's Customization Suite made our product knowledge usable in real time. That changed our win
+                rate."
+              </blockquote>
+              <div className="text-sm text-muted-foreground">— VP Sales, SaaS Enterprise</div>
+            </div>
+            <div className="bg-muted/50 rounded-lg p-8">
+              <div className="flex items-center mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
+                ))}
+              </div>
+              <blockquote className="text-lg leading-relaxed mb-6">
+                "Team Prompts + Active Prompt turned compliance from a liability into a strength."
+              </blockquote>
+              <div className="text-sm text-muted-foreground">— Head of Risk, Financial Services</div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Security */}
-      <section className="relative py-24 bg-gradient-to-br from-rose-50/20 via-white to-pink-50/30">
-        <div className="absolute inset-0 bg-gradient-radial-rose opacity-8"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 mb-8">Enterprise-grade security</h2>
-              <p className="text-2xl text-gray-800 mb-10 font-medium">Built for compliance from day one</p>
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0" />
-                  <span className="text-lg text-gray-700 font-medium">End-to-end encryption</span>
+      <section id="security" className="py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Enterprise Security & Governance</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <Shield className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium">Role-based access control</h3>
+            </div>
+            <div className="text-center">
+              <Users className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium">Admin-only customization privileges</h3>
+            </div>
+            <div className="text-center">
+              <BarChart3 className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium">Audit trails for prompts and knowledge changes</h3>
+            </div>
+            <div className="text-center">
+              <Award className="w-8 h-8 text-foreground mx-auto mb-4" />
+              <h3 className="font-medium">Least-privilege defaults and compliance-ready design</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Form */}
+      <section className="py-24 bg-primary text-primary-foreground">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Start Your Enterprise Pilot</h2>
+            <p className="text-xl opacity-90 text-balance leading-relaxed">
+              AlongsideOS turns your content into <strong>live, voice-powered guidance</strong>. See it in action with
+              your team.
+            </p>
+          </div>
+
+          <div className="bg-primary-foreground/10 rounded-lg p-8">
+            <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Work Email*</label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder-primary-foreground/60"
+                    placeholder="you@company.com"
+                  />
                 </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-rose-600 flex-shrink-0" />
-                  <span className="text-lg text-gray-700 font-medium">SSO/SAML + SCIM</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-pink-600 flex-shrink-0" />
-                  <span className="text-lg text-gray-700 font-medium">Audit logs & retention</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0" />
-                  <span className="text-lg text-gray-700 font-medium">Policy guardrails</span>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Company*</label>
+                  <input
+                    type="text"
+                    className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder-primary-foreground/60"
+                    placeholder="Your Company"
+                  />
                 </div>
               </div>
-            </div>
-            <div className="bg-gradient-to-br from-white/90 via-red-50/30 to-pink-50/40 p-10 rounded-2xl border border-white/50 shadow-2xl backdrop-blur-sm">
-              <div className="text-lg text-gray-700 mb-6 font-medium">Compliance certifications</div>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl text-center border border-gray-200/50 shadow-lg">
-                  <div className="text-xl font-bold text-gray-900">SOC 2</div>
-                  <div className="text-lg text-gray-600">Type II</div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Team Size</label>
+                  <select className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground">
+                    <option>1-10</option>
+                    <option>11-50</option>
+                    <option>51-200</option>
+                    <option>200+</option>
+                  </select>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl text-center border border-gray-200/50 shadow-lg">
-                  <div className="text-xl font-bold text-gray-900">HIPAA</div>
-                  <div className="text-lg text-gray-600">Compliant</div>
-                </div>
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl text-center border border-gray-200/50 shadow-lg">
-                  <div className="text-xl font-bold text-gray-900">GDPR</div>
-                  <div className="text-lg text-gray-600">Ready</div>
-                </div>
-                <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl text-center border border-gray-200/50 shadow-lg">
-                  <div className="text-xl font-bold text-gray-900">ISO 27001</div>
-                  <div className="text-lg text-gray-600">Certified</div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Primary Use Case</label>
+                  <select className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground">
+                    <option>Sales</option>
+                    <option>Support</option>
+                    <option>Compliance</option>
+                    <option>Other</option>
+                  </select>
                 </div>
               </div>
-            </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Timeline</label>
+                  <select className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground">
+                    <option>Now</option>
+                    <option>30–60 Days</option>
+                    <option>Exploring</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Notes</label>
+                <textarea
+                  rows={3}
+                  className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder-primary-foreground/60"
+                  placeholder="Tell us about your specific needs..."
+                />
+              </div>
+              <Button type="submit" size="lg" variant="secondary" className="w-full text-base">
+                Submit
+              </Button>
+            </form>
+            <p className="text-sm opacity-75 mt-6 text-center">
+              We'll follow up within one business day. Privacy-first. No spam.
+            </p>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="relative py-24 bg-gradient-to-br from-white via-rose-50/20 to-pink-50/30">
-        <div className="absolute inset-0 bg-gradient-radial-red opacity-6"></div>
-        <div className="relative z-10 max-w-4xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 mb-8">Frequently asked questions</h2>
+      <section className="py-24 bg-muted/30">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Frequently Asked Questions</h2>
           </div>
 
-          <Accordion type="single" collapsible className="space-y-6">
-            {[
-              {
-                q: "Does it join the call?",
-                a: "No. It listens from your mic and never appears on participant lists.",
-              },
-              {
-                q: "How fast can we pilot?",
-                a: "Under 60 seconds for a single seat. One day for team SSO setup.",
-              },
-              {
-                q: "Is our data secure?",
-                a: "Yes. End-to-end encryption, SOC 2 compliant, never used for training.",
-              },
-              {
-                q: "What does it replace?",
-                a: "Idle ChatGPT seats, heavyweight voice pilots, manual note-taking.",
-              },
-            ].map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="bg-white/70 backdrop-blur-sm border border-white/50 rounded-2xl px-8 shadow-xl">
-                <AccordionTrigger className="text-left font-bold text-lg text-gray-900">{item.q}</AccordionTrigger>
-                <AccordionContent className="text-gray-700 text-lg font-medium">{item.a}</AccordionContent>
-              </AccordionItem>
-            ))}
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="item-1" className="bg-card border-0 rounded-lg px-6">
+              <AccordionTrigger className="text-left">Does AlongsideOS record meetings?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                No. AlongsideOS is focused on in-call enablement. Recording and retention are configurable by admins.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2" className="bg-card border-0 rounded-lg px-6">
+              <AccordionTrigger className="text-left">
+                What is the difference between Team Prompts and Active Prompt?
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                <strong>Team Prompts</strong> are curated, reusable commands. <strong>Active Prompt</strong> surfaces
+                automatically during key moments in a call.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3" className="bg-card border-0 rounded-lg px-6">
+              <AccordionTrigger className="text-left">How does Google Calendar integration help?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                It pre-loads context — attendees, titles, links — so AlongsideOS is ready before the meeting starts.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4" className="bg-card border-0 rounded-lg px-6">
+              <AccordionTrigger className="text-left">What can admins control?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Roles, permissions, prompt libraries, compliance guardrails, analytics, and audits.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-5" className="bg-card border-0 rounded-lg px-6">
+              <AccordionTrigger className="text-left">What can team members do?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Trigger prompts by voice, save answers, suggest new prompts, and share content back with admins.
+              </AccordionContent>
+            </AccordionItem>
           </Accordion>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-radial-red opacity-15"></div>
-        <div className="absolute inset-0 bg-gradient-radial-pink opacity-10"></div>
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-5xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-300 mb-8">Ready to deploy AI that actually works?</h2>
-          <p className="text-2xl text-white/80 mb-10 font-medium">Voice-first AI in under 60 seconds</p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-              <Button size="lg" className="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-bold px-10 py-5 text-xl shadow-2xl backdrop-blur-sm border border-white/20">
-                <Play className="w-6 h-6 mr-3" />
-                Start Free
-              </Button>
-            </Link>
-            <Link href="https://calendar.app.google/fk1EMKKerDqLojZh7" target="_blank">
-              <Button size="lg" className="bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20 font-bold px-10 py-5 text-xl shadow-2xl">
-                Book Demo
-              </Button>
-            </Link>
+      {/* Footer */}
+      <footer className="py-16 bg-background border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <img src="/logo.png" alt="AlongsideOS" className="w-8 h-8" />
+              <span className="text-xl font-semibold">AlongsideOS</span>
+            </div>
+            <p className="text-muted-foreground mb-6">
+              The comprehensive <strong>AI Enablement platform</strong>: customized, governed, and delivered through
+              voice.
+            </p>
+            <Button size="lg" className="mb-8">
+              Request a Demo
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </div>
+
+          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-muted-foreground">
+            <span>© 2025 AlongsideOS Inc.</span>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Privacy
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Security
+            </a>
+            <a href="#" className="hover:text-foreground transition-colors">
+              Terms
+            </a>
           </div>
         </div>
-      </section>
-
-      <Footer />
+      </footer>
     </div>
   )
 }
