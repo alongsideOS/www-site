@@ -793,82 +793,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Lead Form */}
-      <section className="py-24 bg-primary text-primary-foreground">
+      {/* Booking Calendar */}
+      <section className="py-24 bg-muted/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Start Your Enterprise Pilot</h2>
-            <p className="text-xl opacity-90 text-balance leading-relaxed">
-              AlongsideOS turns your content into <strong>live, voice-powered guidance</strong>. See it in action with
-              your team.
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Schedule Your Demo</h2>
+            <p className="text-xl text-muted-foreground text-balance leading-relaxed">
+              See AlongsideOS in action with your team. Book a personalized demo to explore how voice-powered AI can transform your workflow.
             </p>
           </div>
 
-          <div className="bg-primary-foreground/10 rounded-lg p-8">
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Work Email*</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder-primary-foreground/60"
-                    placeholder="you@company.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Company*</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder-primary-foreground/60"
-                    placeholder="Your Company"
-                  />
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Team Size</label>
-                  <select className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground">
-                    <option>1-10</option>
-                    <option>11-50</option>
-                    <option>51-200</option>
-                    <option>200+</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">Primary Use Case</label>
-                  <select className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground">
-                    <option>Sales</option>
-                    <option>Support</option>
-                    <option>Compliance</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Timeline</label>
-                  <select className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground">
-                    <option>Now</option>
-                    <option>30–60 Days</option>
-                    <option>Exploring</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-2">Notes</label>
-                <textarea
-                  rows={3}
-                  className="w-full px-4 py-2 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder-primary-foreground/60"
-                  placeholder="Tell us about your specific needs..."
-                />
-              </div>
-              <Button type="submit" size="lg" variant="secondary" className="w-full text-base">
-                Submit
-              </Button>
-            </form>
-            <p className="text-sm opacity-75 mt-6 text-center">
-              We'll follow up within one business day. Privacy-first. No spam.
-            </p>
+          <div className="bg-card rounded-lg border overflow-hidden">
+            <iframe 
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tWEP8ks8gSOwZ2kdhx6hMOUXDrzRb8qVC4yPTsOhs-zBKLP3GSCCAW0PVBXXFbAlxy3T5y8Ve?gv=true" 
+              className="w-full h-[600px] border-0"
+              title="Schedule Demo with AlongsideOS"
+            />
           </div>
         </div>
       </section>
