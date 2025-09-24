@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { GoogleTagManager } from "@/components/google-tag-manager"
+import { handleCalendarClick } from "@/lib/calendar-utils"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -48,7 +49,7 @@ export default function ExcelPage() {
               <a href="/#security" className="text-muted-foreground hover:text-foreground transition-colors">
                 Security
               </a>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={handleCalendarClick}>
                 Request Demo
               </Button>
             </div>
@@ -93,7 +94,7 @@ export default function ExcelPage() {
                 Security
               </a>
               <div className="pt-2">
-                <Button variant="outline" size="sm" className="w-full">
+                <Button variant="outline" size="sm" className="w-full" onClick={handleCalendarClick}>
                   Request Demo
                 </Button>
               </div>

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { GoogleTagManager, trackMeetingForm } from "@/components/google-tag-manager"
+import { handleCalendarClick } from "@/lib/calendar-utils"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CodeEditor } from "@/components/code-editor"
@@ -156,7 +157,7 @@ export default function HomePage() {
               <a href="#security" className="text-muted-foreground hover:text-foreground transition-colors">
                 Security
               </a>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={handleCalendarClick}>
                 Request Demo
               </Button>
             </div>
@@ -201,7 +202,7 @@ export default function HomePage() {
                 Security
               </a>
               <div className="pt-2">
-                <Button variant="outline" size="sm" className="w-full">
+                <Button variant="outline" size="sm" className="w-full" onClick={handleCalendarClick}>
                   Request Demo
                 </Button>
               </div>
@@ -805,16 +806,34 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div 
-            className="bg-card rounded-lg border overflow-hidden"
-            onMouseEnter={() => trackMeetingForm()}
-          >
+          <div className="bg-card rounded-lg border overflow-hidden relative">
+            {/* Background iframe for visual appeal */}
             <iframe 
               src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tWEP8ks8gSOwZ2kdhx6hMOUXDrzRb8qVC4yPTsOhs-zBKLP3GSCCAW0PVBXXFbAlxy3T5y8Ve?gv=true" 
-              className="w-full h-[600px] border-0"
-              title="Schedule Demo with AlongsideOS"
-              onLoad={() => trackMeetingForm()}
+              className="w-full h-[600px] border-0 pointer-events-none"
+              title="Schedule Demo with AlongsideOS Preview"
+              tabIndex={-1}
             />
+            
+            {/* Gray modal overlay */}
+            <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center">
+              <div className="text-center text-white px-6">
+                <div className="mb-6">
+                  <Calendar className="w-16 h-16 mx-auto mb-4 text-white" />
+                  <h3 className="text-2xl font-semibold mb-2">Ready to See AlongsideOS in Action?</h3>
+                  <p className="text-gray-200 text-lg">
+                    Book a personalized demo and discover how voice AI can transform your workflow.
+                  </p>
+                </div>
+                <Button 
+                  size="lg" 
+                  onClick={handleCalendarClick}
+                  className="text-base px-8 py-3 bg-white text-gray-900 hover:bg-gray-100"
+                >
+                  Book Demo Now
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
