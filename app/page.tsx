@@ -136,6 +136,21 @@ export default function HomePage() {
 
 </system_prompt>`
 
+  const waveExampleCode = `<wave id="sales-objection-security">
+  <role>Sales Engineer</role>
+  <trigger>
+    Prospect asks: "How secure is your platform?"
+  </trigger>
+  <response>
+    Emphasize SOC2 + ISO27001 certifications, data encryption in transit & at rest.
+    Highlight admin-only role controls and real-time audit trails.
+    Close with: "Would you like our compliance one-pager?"
+  </response>
+  <compliance>
+    Language approved by Legal & Security teams. Immutable.
+  </compliance>
+</wave>`
+
   return (
     <div className="min-h-screen bg-background">
       <GoogleTagManager />
@@ -216,31 +231,28 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-32">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-6">
-              Voice-First AI Enablement
+              Voice-First AI Enablement Platform
             </Badge>
             <h1 className="text-5xl md:text-7xl font-light text-balance leading-tight mb-8">
-              Your Knowledge. <span className="font-medium">Your AI.</span> Delivered Through Voice.
+              Your Knowledge. <span className="font-medium">Your Workflows.</span> Powered by Voice.
             </h1>
 
             <div className="space-y-6 mb-12">
               <p className="text-2xl font-medium text-balance leading-relaxed">
-                AlongsideOS is the <span className="text-primary">desktop voice assistant</span> that adapts entirely to
-                your enterprise.
+                AlongsideOS is the <span className="text-primary">AI Enablement Platform</span> that transforms enterprise knowledge into voice-driven workflows.
               </p>
 
               <div className="flex items-center justify-center gap-4 text-lg text-muted-foreground">
                 <span className="hidden md:block w-12 h-px bg-border"></span>
-                <span className="text-center">Unlike generic AI tools</span>
+                <span className="text-center">We call them Waves</span>
                 <span className="hidden md:block w-12 h-px bg-border"></span>
               </div>
 
               <p className="text-xl text-balance leading-relaxed max-w-3xl mx-auto">
-                AlongsideOS empowers your teams <strong className="text-foreground">during calls</strong> with real-time
-                answers, prompts, and definitions — all customized with your{" "}
-                <span className="bg-primary/10 text-primary px-2 py-1 rounded-md font-medium">
-                  playbooks, policies, and product truth
-                </span>
-                .
+                We don't just summarize meetings — we enable teams with{" "}
+                <strong className="text-foreground">customized playbooks, role-specific prompts, and auditable workflows</strong>{" "}
+                called <span className="bg-primary/10 text-primary px-2 py-1 rounded-md font-medium">Waves</span>, 
+                all delivered through an unobtrusive desktop voice assistant.
               </p>
             </div>
 
@@ -257,38 +269,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why Voice AI Section */}
+      {/* Why Enterprises Choose AlongsideOS */}
       <section className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Why Voice AI Enablement Matters</h2>
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Why Enterprises Choose AlongsideOS</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-12">
             <div className="text-center">
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-                <Clock className="w-8 h-8 text-foreground" />
+                <FileText className="w-8 h-8 text-foreground" />
               </div>
-              <h3 className="text-xl font-medium mb-4">Immediate</h3>
+              <h3 className="text-xl font-medium mb-4">Customization First</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Get answers while you speak — no post-call delays.
+                Inject your policies, playbooks, and product truth directly into AI workflows.
               </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-                <Shield className="w-8 h-8 text-foreground" />
+                <Mic className="w-8 h-8 text-foreground" />
               </div>
-              <h3 className="text-xl font-medium mb-4">Unobtrusive</h3>
+              <h3 className="text-xl font-medium mb-4">Voice Native</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Always in flow, no screen-switching, no disruption.
+                Enablement delivered seamlessly in-call, no screen-switching required.
               </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-                <Zap className="w-8 h-8 text-foreground" />
+                <BarChart3 className="w-8 h-8 text-foreground" />
               </div>
-              <h3 className="text-xl font-medium mb-4">Empowering</h3>
+              <h3 className="text-xl font-medium mb-4">Workflows at Scale</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Voice amplifies your team's confidence in the moment.
+                Deploy dynamic, auditable AI flows — we call them Waves.
               </p>
             </div>
           </div>
@@ -307,10 +319,20 @@ export default function HomePage() {
       <section id="features" className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <p className="text-foreground text-lg font-medium mb-4">Enterprise AI customization</p>
+            <p className="text-foreground text-lg font-medium mb-4">The Wave Engine</p>
             <h2 className="text-4xl md:text-5xl font-light text-balance leading-tight mb-16">
-              The Customization Suite turns your knowledge into voice-powered intelligence.
+              The AlongsideOS Platform transforms knowledge into voice workflows.
             </h2>
+            
+            <div className="mb-16">
+              <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+                At the heart of AlongsideOS is the <strong className="text-foreground">Wave Engine</strong> — our proprietary platform for generating, refining, and deploying voice-based AI workflows called <strong className="text-foreground">Waves</strong>.
+              </p>
+            </div>
+
+            <div className="mb-12">
+              <h3 className="text-2xl font-medium mb-8">What the Platform Enables</h3>
+            </div>
 
             <div className="space-y-12">
               <div className="flex items-start gap-6">
@@ -318,10 +340,9 @@ export default function HomePage() {
                   <FileText className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Content Injection</h3>
+                  <h3 className="text-xl font-medium mb-3">Customization</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Upload product docs, policies, SLAs, SOPs, glossaries, and risk frameworks. AlongsideOS turns them
-                    into searchable, speakable, instantly retrievable intelligence.
+                    Encode product docs, compliance policies, SLAs, and glossaries directly into AI workflows.
                   </p>
                 </div>
               </div>
@@ -331,10 +352,9 @@ export default function HomePage() {
                   <Target className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Role-Aware Delivery</h3>
+                  <h3 className="text-xl font-medium mb-3">Workflow Definition</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Sales, Engineers, Legal, Support — each role gets tailored prompts and definitions. AlongsideOS
-                    ensures relevance by matching content to team context.
+                    Transform static knowledge into structured, voice-triggered workflows that adapt to context.
                   </p>
                 </div>
               </div>
@@ -344,10 +364,9 @@ export default function HomePage() {
                   <Shield className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Guardrails & Governance</h3>
+                  <h3 className="text-xl font-medium mb-3">Role-Aware Delivery</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Admins set guardrails for what's approved, blocked, or flagged. Built-in analytics track prompt
-                    adoption, accuracy, and compliance alignment.
+                    Different prompts and Waves for Sales, Support, Legal, Engineering — tailored to each team's needs.
                   </p>
                 </div>
               </div>
@@ -357,10 +376,9 @@ export default function HomePage() {
                   <Zap className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Real-Time Intelligence</h3>
+                  <h3 className="text-xl font-medium mb-3">Governance</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Context-aware suggestions surface automatically during calls. AlongsideOS listens for key moments
-                    and delivers the right prompt at the right time.
+                    Admins approve language, set guardrails, and track adoption across all workflows.
                   </p>
                 </div>
               </div>
@@ -370,10 +388,9 @@ export default function HomePage() {
                   <RotateCw className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Continuous Learning</h3>
+                  <h3 className="text-xl font-medium mb-3">Auditability</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Your content evolves, and so does AlongsideOS. Automatic content refresh cycles ensure your team
-                    always has the latest information.
+                    Every Wave is logged, versioned, and performance-tracked for complete transparency.
                   </p>
                 </div>
               </div>
@@ -383,10 +400,9 @@ export default function HomePage() {
                   <Palette className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Precision Targeting</h3>
+                  <h3 className="text-xl font-medium mb-3">Real-Time Intelligence</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Not every prompt is for every person. AlongsideOS delivers role-specific, situation-aware content
-                    that matches your team's exact needs.
+                    Context-aware workflows surface automatically during calls based on conversation dynamics.
                   </p>
                 </div>
               </div>
@@ -395,16 +411,16 @@ export default function HomePage() {
 
           {/* Code Example */}
           <div className="max-w-4xl mx-auto mt-16">
-            <h4 className="text-lg font-medium mb-6">Example — A Complete System Prompt in XML:</h4>
+            <h4 className="text-lg font-medium mb-6">Example — A Sales Objection Handling Wave in XML:</h4>
             <CodeEditor 
-              code={xmlCode} 
+              code={waveExampleCode} 
               language="xml" 
-              title="alongside-system-prompt-v3.xml" 
+              title="sales-objection-security-wave.xml" 
               collapsible={true}
-              previewLines={8}
+              previewLines={6}
             />
             <p className="text-muted-foreground mt-6 italic text-center">
-              This is how your team's knowledge becomes a <strong>sophisticated AI assistant</strong> during live calls.
+              This is how AlongsideOS turns your content into <strong>reusable, auditable voice workflows</strong>.
             </p>
           </div>
         </div>
