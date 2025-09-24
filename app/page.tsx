@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { GoogleTagManager, trackMeetingForm } from "@/components/google-tag-manager"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { CodeEditor } from "@/components/code-editor"
@@ -136,6 +137,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <GoogleTagManager />
       {/* Navigation */}
       <nav className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -803,11 +805,15 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="bg-card rounded-lg border overflow-hidden">
+          <div 
+            className="bg-card rounded-lg border overflow-hidden"
+            onMouseEnter={() => trackMeetingForm()}
+          >
             <iframe 
               src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tWEP8ks8gSOwZ2kdhx6hMOUXDrzRb8qVC4yPTsOhs-zBKLP3GSCCAW0PVBXXFbAlxy3T5y8Ve?gv=true" 
               className="w-full h-[600px] border-0"
               title="Schedule Demo with AlongsideOS"
+              onLoad={() => trackMeetingForm()}
             />
           </div>
         </div>

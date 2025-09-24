@@ -5,6 +5,7 @@ import type React from "react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
+import { GoogleTagManager } from "@/components/google-tag-manager"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import {
@@ -87,6 +88,7 @@ export default function UseCasesPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <GoogleTagManager />
       {/* Navigation */}
       <nav className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

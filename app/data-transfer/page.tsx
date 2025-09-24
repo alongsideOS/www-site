@@ -1,9 +1,11 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { GoogleTagManager } from "@/components/google-tag-manager";
 
 export default function DataTransferPage() {
   return (
     <div className="min-h-screen bg-white">
+      <GoogleTagManager />
       <Header />
       <main className="container mx-auto px-4 py-12">
         <div className="prose max-w-none">

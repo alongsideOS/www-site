@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import { GoogleTagManager } from "@/components/google-tag-manager"
 import { useEffect, useState } from "react"
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -58,6 +59,7 @@ export default function EulaPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <GoogleTagManager />
       <Header />
 
       <div className="container mx-auto px-4 py-8 max-w-7xl">
