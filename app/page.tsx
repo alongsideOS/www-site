@@ -841,14 +841,16 @@ ${xmlCode}
             />
             
             {/* Gray modal overlay */}
-            <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center">
-              <div className="text-center text-white px-6">
+            <div className="absolute inset-0 bg-gray-900/30 backdrop-blur-sm flex items-center justify-center">
+              <div className="text-center text-black px-6">
                 <div className="mb-6">
-                  <Calendar className="w-16 h-16 mx-auto mb-4 text-white" />
-                  <h3 className="text-2xl font-semibold mb-2">Ready to See AlongsideOS in Action?</h3>
-                  <p className="text-gray-200 text-lg">
-                    Book a personalized demo and discover how voice AI can transform your workflow.
-                  </p>
+                  <Calendar className="w-16 h-16 mx-auto mb-4 text-black" />
+                  <div className="bg-white/80 backdrop-blur-md rounded-lg p-4 mb-4">
+                    <h3 className="text-2xl font-semibold mb-2">Ready to See AlongsideOS in Action?</h3>
+                    <p className="text-gray-800 text-lg">
+                      Book a personalized demo and discover how voice AI can transform your workflow.
+                    </p>
+                  </div>
                 </div>
                 <Button 
                   size="lg" 
