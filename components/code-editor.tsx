@@ -4,6 +4,8 @@ import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Copy, Check, ChevronDown, ChevronUp } from "lucide-react"
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 interface CodeEditorProps {
   code: string
@@ -36,6 +38,10 @@ export function CodeEditor({
     if (lines.length <= previewLines) return code
     
     return lines.slice(0, previewLines).join('\n') + '\n  ...'
+  }
+
+  const getCodeToShow = () => {
+    return getPreviewCode()
   }
 
   const toggleExpanded = () => {
@@ -82,11 +88,24 @@ export function CodeEditor({
         <div className={`overflow-x-auto transition-all duration-300 ease-in-out ${
           collapsible && !isExpanded ? 'max-h-32' : ''
         }`}>
-          <div className="p-4">
-            <pre className="text-sm leading-relaxed">
-              <code className="text-slate-300 font-mono">{getPreviewCode()}</code>
-            </pre>
-          </div>
+          <SyntaxHighlighter
+            language={language}
+            style={vscDarkPlus}
+            customStyle={{
+              margin: 0,
+              padding: '1rem',
+              background: 'transparent',
+              fontSize: '0.875rem',
+              lineHeight: '1.5'
+            }}
+            codeTagProps={{
+              style: {
+                fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+              }
+            }}
+          >
+            {getCodeToShow()}
+          </SyntaxHighlighter>
         </div>
         {collapsible && !isExpanded && (
           <div className="px-4 pb-3">

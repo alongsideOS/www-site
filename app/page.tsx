@@ -136,7 +136,11 @@ export default function HomePage() {
 
 </system_prompt>`
 
-  const waveExampleCode = `<wave id="sales-objection-security">
+  const combinedCode = `<!-- SYSTEM PROMPT -->
+${xmlCode}
+
+<!-- APPLICATION WAVE EXAMPLE -->
+<wave id="sales-objection-security">
   <role>Sales Engineer</role>
   <trigger>
     Prospect asks: "How secure is your platform?"
@@ -231,28 +235,26 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-32">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-6">
-              Voice-First AI Enablement Platform
+              The World's First Voice-First AI Workflow Platform
             </Badge>
             <h1 className="text-5xl md:text-7xl font-light text-balance leading-tight mb-8">
-              Your Knowledge. <span className="font-medium">Your Workflows.</span> Powered by Voice.
+              Get Answers While You Speak — <span className="font-medium">No Post-Call Delays</span>
             </h1>
 
             <div className="space-y-6 mb-12">
               <p className="text-2xl font-medium text-balance leading-relaxed">
-                AlongsideOS is the <span className="text-primary">AI Enablement Platform</span> that transforms enterprise knowledge into voice-driven workflows.
+                AlongsideOS is the <span className="text-primary">AI Enablement Platform</span> that turns enterprise knowledge into voice-driven workflows called <strong className="text-foreground">Waves</strong>.
               </p>
 
               <div className="flex items-center justify-center gap-4 text-lg text-muted-foreground">
                 <span className="hidden md:block w-12 h-px bg-border"></span>
-                <span className="text-center">We call them Waves</span>
+                <span className="text-center">Live answers, prompts, and workflows</span>
                 <span className="hidden md:block w-12 h-px bg-border"></span>
               </div>
 
               <p className="text-xl text-balance leading-relaxed max-w-3xl mx-auto">
-                We don't just summarize meetings — we enable teams with{" "}
-                <strong className="text-foreground">customized playbooks, role-specific prompts, and auditable workflows</strong>{" "}
-                called <span className="bg-primary/10 text-primary px-2 py-1 rounded-md font-medium">Waves</span>, 
-                all delivered through an unobtrusive desktop voice assistant.
+                Your teams don't wait for notes or summaries — they get{" "}
+                <strong className="text-foreground">live answers, prompts, and workflows in the moment</strong>, while still speaking.
               </p>
             </div>
 
@@ -278,20 +280,20 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-12">
             <div className="text-center">
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-                <FileText className="w-8 h-8 text-foreground" />
-              </div>
-              <h3 className="text-xl font-medium mb-4">Customization First</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Inject your policies, playbooks, and product truth directly into AI workflows.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
                 <Mic className="w-8 h-8 text-foreground" />
               </div>
               <h3 className="text-xl font-medium mb-4">Voice Native</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Enablement delivered seamlessly in-call, no screen-switching required.
+                Enablement delivered in real time, inside conversations.
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
+                <FileText className="w-8 h-8 text-foreground" />
+              </div>
+              <h3 className="text-xl font-medium mb-4">Customization First</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Encode your playbooks, policies, and product truth.
               </p>
             </div>
             <div className="text-center">
@@ -326,12 +328,12 @@ export default function HomePage() {
             
             <div className="mb-16">
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                At the heart of AlongsideOS is the <strong className="text-foreground">Wave Engine</strong> — our proprietary platform for generating, refining, and deploying voice-based AI workflows called <strong className="text-foreground">Waves</strong>.
+                At the heart of AlongsideOS is the <strong className="text-foreground">Wave Engine</strong> — the platform that generates, refines, and deploys voice-based AI workflows.
               </p>
             </div>
 
             <div className="mb-12">
-              <h3 className="text-2xl font-medium mb-8">What the Platform Enables</h3>
+              <h3 className="text-2xl font-medium mb-8">What the Platform Delivers</h3>
             </div>
 
             <div className="space-y-12">
@@ -342,7 +344,7 @@ export default function HomePage() {
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Customization</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Encode product docs, compliance policies, SLAs, and glossaries directly into AI workflows.
+                    Upload product docs, policies, SLAs, SOPs, and glossaries.
                   </p>
                 </div>
               </div>
@@ -352,9 +354,9 @@ export default function HomePage() {
                   <Target className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Workflow Definition</h3>
+                  <h3 className="text-xl font-medium mb-3">Waves</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Transform static knowledge into structured, voice-triggered workflows that adapt to context.
+                    Transform static knowledge into structured, voice-triggered workflows.
                   </p>
                 </div>
               </div>
@@ -366,7 +368,7 @@ export default function HomePage() {
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Role-Aware Delivery</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Different prompts and Waves for Sales, Support, Legal, Engineering — tailored to each team's needs.
+                    Sales, Legal, Support, Engineering each get tailored Waves.
                   </p>
                 </div>
               </div>
@@ -376,9 +378,9 @@ export default function HomePage() {
                   <Zap className="w-6 h-6 text-foreground" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Governance</h3>
+                  <h3 className="text-xl font-medium mb-3">Governance & Guardrails</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Admins approve language, set guardrails, and track adoption across all workflows.
+                    Admins approve language, block unsafe responses.
                   </p>
                 </div>
               </div>
@@ -390,7 +392,7 @@ export default function HomePage() {
                 <div className="flex-1">
                   <h3 className="text-xl font-medium mb-3">Auditability</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Every Wave is logged, versioned, and performance-tracked for complete transparency.
+                    Every Wave is logged, versioned, and performance-tracked.
                   </p>
                 </div>
               </div>
@@ -411,13 +413,13 @@ export default function HomePage() {
 
           {/* Code Example */}
           <div className="max-w-4xl mx-auto mt-16">
-            <h4 className="text-lg font-medium mb-6">Example — A Sales Objection Handling Wave in XML:</h4>
+            <h4 className="text-lg font-medium mb-6">Complete System Prompt + Wave Example in XML:</h4>
             <CodeEditor 
-              code={waveExampleCode} 
+              code={combinedCode} 
               language="xml" 
-              title="sales-objection-security-wave.xml" 
+              title="alongside-system-prompt-with-wave-example.xml" 
               collapsible={true}
-              previewLines={6}
+              previewLines={10}
             />
             <p className="text-muted-foreground mt-6 italic text-center">
               This is how AlongsideOS turns your content into <strong>reusable, auditable voice workflows</strong>.
@@ -432,7 +434,7 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Delivered Through Voice</h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Customization powers the engine. <strong>Voice delivers it in the moment of need.</strong>
+              AlongsideOS isn't a dashboard you check later. It's <strong className="text-foreground">an unobtrusive assistant in the room with you</strong>.
             </p>
           </div>
 
@@ -444,7 +446,7 @@ export default function HomePage() {
               <div>
                 <h3 className="text-xl font-medium mb-4">Active Prompt</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Context-aware suggestions surface automatically in-call.
+                  Context-aware suggestions surface automatically while you speak.
                 </p>
               </div>
             </div>
@@ -455,7 +457,7 @@ export default function HomePage() {
               <div>
                 <h3 className="text-xl font-medium mb-4">Team Prompts</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  A shared prompt library, curated by admins, reusable across teams.
+                  Shared, reusable Waves curated by admins, voice-triggered in calls.
                 </p>
               </div>
             </div>
@@ -466,10 +468,16 @@ export default function HomePage() {
               <div>
                 <h3 className="text-xl font-medium mb-4">Instant Lookups</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Ask for policies, definitions, or competitive intel by voice and get answers on the spot.
+                  Ask by voice for policies, definitions, or competitive intel — get the answer instantly.
                 </p>
               </div>
             </div>
+          </div>
+          
+          <div className="text-center mt-16">
+            <blockquote className="text-xl text-muted-foreground italic max-w-3xl mx-auto border-l-4 border-primary pl-6">
+              <strong className="text-foreground not-italic">This immediacy is what distinguishes AlongsideOS</strong>: the only platform where voice + workflows meet.
+            </blockquote>
           </div>
         </div>
       </section>
@@ -816,9 +824,10 @@ export default function HomePage() {
       <section className="py-24 bg-muted/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Schedule Your Demo</h2>
+            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Start Your Enterprise Pilot</h2>
             <p className="text-xl text-muted-foreground text-balance leading-relaxed">
-              See AlongsideOS in action with your team. Book a personalized demo to explore how voice-powered AI can transform your workflow.
+              AlongsideOS is <strong className="text-foreground">the world's first voice-first AI workflow platform</strong>. 
+              Turn your knowledge into live, auditable voice workflows today.
             </p>
           </div>
 
@@ -863,40 +872,50 @@ export default function HomePage() {
 
           <Accordion type="single" collapsible className="space-y-4">
             <AccordionItem value="item-1" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">Does AlongsideOS record meetings?</AccordionTrigger>
+              <AccordionTrigger className="text-left">How does Google Calendar integration help?</AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                No. AlongsideOS is focused on in-call enablement. Recording and retention are configurable by admins.
+                It preloads meeting context so Waves are relevant from the first second.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2" className="bg-card border-0 rounded-lg px-6">
               <AccordionTrigger className="text-left">
-                What is the difference between Team Prompts and Active Prompt?
+                What are Waves?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                <strong>Team Prompts</strong> are curated, reusable commands. <strong>Active Prompt</strong> surfaces
-                automatically during key moments in a call.
+                Waves are <strong>voice-based AI workflows</strong> generated and deployed by the AlongsideOS Platform.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">How does Google Calendar integration help?</AccordionTrigger>
+              <AccordionTrigger className="text-left">How are Waves different from prompts?</AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                It pre-loads context — attendees, titles, links — so AlongsideOS is ready before the meeting starts.
+                Prompts are static. <strong>Waves are dynamic, role-aware, auditable workflows</strong> tied to compliance and outcomes.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">What can admins control?</AccordionTrigger>
+              <AccordionTrigger className="text-left">How does AlongsideOS differ from other AI tools?</AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Roles, permissions, prompt libraries, compliance guardrails, analytics, and audits.
+                Unlike Distyl (workflow-first) or Cluely (note-taking + prompts), AlongsideOS unites both:
+                <br/><br/>
+                • <strong>Immediate voice guidance</strong><br/>
+                • <strong>Customizable workflows (Waves)</strong><br/>
+                • <strong>Enterprise governance</strong>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-5" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">What can team members do?</AccordionTrigger>
+              <AccordionTrigger className="text-left">Does AlongsideOS record meetings?</AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Trigger prompts by voice, save answers, suggest new prompts, and share content back with admins.
+                No. It focuses on in-call enablement. Recording is admin-configurable.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-6" className="bg-card border-0 rounded-lg px-6">
+              <AccordionTrigger className="text-left">Who controls customization?</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                Admins only. They define, refine, and approve all Waves.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
