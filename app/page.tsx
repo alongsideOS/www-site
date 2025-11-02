@@ -31,7 +31,8 @@ import {
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   
-  const xmlCode = `<system_prompt version="3.0">
+  const exampleSystemPrompt = `<!-- SYSTEM PROMPT -->
+<system_prompt version="3.0">
   
   <!-- IDENTITY -->
   <identity>
@@ -134,10 +135,7 @@ export default function HomePage() {
     <rule>Never give >3 suggestions</rule>
   </never>
 
-</system_prompt>`
-
-  const combinedCode = `<!-- SYSTEM PROMPT -->
-${xmlCode}
+</system_prompt>
 
 <!-- APPLICATION WAVE EXAMPLE -->
 <wave id="sales-objection-security">
@@ -230,696 +228,591 @@ ${xmlCode}
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-32">
-          <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-6">
-              The World's First Voice-First AI Workflow Platform
-            </Badge>
-            <h1 className="text-5xl md:text-7xl font-light text-balance leading-tight mb-8">
-              Get Answers While You Speak — <span className="font-medium">No Post-Call Delays</span>
-            </h1>
-
-            <div className="space-y-6 mb-12">
-              <p className="text-2xl font-medium text-balance leading-relaxed">
-                AlongsideOS is the <span className="text-primary">AI Enablement Platform</span> that turns enterprise knowledge into voice-driven workflows called <strong className="text-foreground">Waves</strong>.
-              </p>
-
-              <div className="flex items-center justify-center gap-4 text-lg text-muted-foreground">
-                <span className="hidden md:block w-12 h-px bg-border"></span>
-                <span className="text-center">Live answers, prompts, and workflows</span>
-                <span className="hidden md:block w-12 h-px bg-border"></span>
-              </div>
-
-              <p className="text-xl text-balance leading-relaxed max-w-3xl mx-auto">
-                Your teams don't wait for notes or summaries — they get{" "}
-                <strong className="text-foreground">live answers, prompts, and workflows in the moment</strong>, while still speaking.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-base px-8">
-                Request a Demo
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-              <Button variant="outline" size="lg" className="text-base px-8 bg-transparent">
-                Start Your Pilot
-              </Button>
-            </div>
+      {/* HERO */}
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-balance tracking-tighter leading-tight mb-6">
+            The Era of Desktop AI Has Begun
+          </h1>
+          <p className="max-w-3xl mx-auto text-lg sm:text-xl md:text-2xl text-muted-foreground text-balance leading-relaxed mb-10">
+            Instead of jumping between apps, use your{" "}
+            <strong className="text-foreground">voice</strong> to complete tasks and automate complex
+            workflows with AlongsideOS, the world’s first voice-first AI workflow platform.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="text-base px-8" onClick={handleCalendarClick}>
+              Get a Demo <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+            <Button variant="outline" size="lg" className="text-base px-8 bg-transparent">
+              See it in Action
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Why Enterprises Choose AlongsideOS */}
-      <section className="py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Why Enterprises Choose AlongsideOS</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-                <Mic className="w-8 h-8 text-foreground" />
+      {/* SECTION: PHILOSOPHY */}
+      <section className="py-24 sm:py-32">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+            The Next Interface for Work
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-12">
+            AI shouldn’t live inside a browser tab.{" "}
+            <strong className="text-foreground">
+              Real enterprise AI belongs on your desktop — alongside your OS
+            </strong>
+            , where it can see your screen, hear your context, and act with you.
+          </p>
+          <blockquote className="text-xl sm:text-2xl text-foreground max-w-4xl mx-auto border-l-4 border-primary pl-6 text-left">
+            AlongsideOS combines <strong className="font-semibold">screen understanding</strong>,{" "}
+            <strong className="font-semibold">voice</strong>,{" "}
+            <strong className="font-semibold">live transcripts</strong>, and{" "}
+            <strong className="font-semibold">workflow automation</strong> to deliver real-time
+            intelligence on your machine.
+          </blockquote>
+        </div>
+      </section>
+
+      {/* SECTION: CORE VALUE */}
+      <section className="py-24 sm:py-32 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+            We Call It Desktop AI
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-16">
+            Desktop AI means{" "}
+            <strong className="text-foreground">
+              AI that sees what you see, hears what you hear, and acts immediately
+            </strong>{" "}
+            — no switching apps, no waiting for summaries.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: Mic,
+                title: "See",
+                description: "Understands your desktop screen and context.",
+              },
+              {
+                icon: Mic,
+                title: "Hear",
+                description: "Listens to your voice and ongoing conversation.",
+              },
+              {
+                icon: Zap,
+                title: "Respond",
+                description: "Uses AI to answer, act, and automate instantly.",
+              },
+              {
+                icon: Shield,
+                title: "Govern",
+                description: "Enterprise-grade guardrails and audit trails built in.",
+              },
+            ].map(({ icon: Icon, title, description }) => (
+              <div key={title} className="bg-card p-8 rounded-2xl text-left">
+                <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{description}</p>
               </div>
-              <h3 className="text-xl font-medium mb-4">Voice Native</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Enablement delivered in real time, inside conversations.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-                <FileText className="w-8 h-8 text-foreground" />
-              </div>
-              <h3 className="text-xl font-medium mb-4">Customization First</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Encode your playbooks, policies, and product truth.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
-                <BarChart3 className="w-8 h-8 text-foreground" />
-              </div>
-              <h3 className="text-xl font-medium mb-4">Workflows at Scale</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Deploy dynamic, auditable AI flows — we call them Waves.
-              </p>
-            </div>
-          </div>
-          <div className="text-center mt-16">
-            <blockquote className="text-xl text-muted-foreground italic max-w-3xl mx-auto">
-              AI is everywhere.{" "}
-              <strong className="text-foreground not-italic">
-                Enablement happens only when it's live, contextual, and customized.
-              </strong>
-            </blockquote>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Customization Suite */}
-      <section id="features" className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-foreground text-lg font-medium mb-4">The Wave Engine</p>
-            <h2 className="text-4xl md:text-5xl font-light text-balance leading-tight mb-16">
-              The AlongsideOS Platform transforms knowledge into voice workflows.
-            </h2>
-            
-            <div className="mb-16">
-              <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                At the heart of AlongsideOS is the <strong className="text-foreground">Wave Engine</strong> — the platform that generates, refines, and deploys voice-based AI workflows.
-              </p>
-            </div>
+      {/* PLATFORM SECTION */}
+      <section className="py-24 sm:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+            The AlongsideOS Platform
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto mb-16">
+            The AlongsideOS Platform transforms your enterprise knowledge into{" "}
+            <strong className="text-foreground">voice-driven workflows</strong> known as{" "}
+            <strong className="text-foreground">Waves</strong>. Each Wave is a reusable, auditable
+            AI workflow — triggered by voice, powered by your data, and deployed directly on the
+            desktop.
+          </p>
 
-            <div className="mb-12">
-              <h3 className="text-2xl font-medium mb-8">What the Platform Delivers</h3>
-            </div>
-
-            <div className="space-y-12">
-              <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                  <FileText className="w-6 h-6 text-foreground" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: FileText,
+                title: "Generates",
+                description: "Capture internal knowledge as structured workflows.",
+              },
+              {
+                icon: RotateCw,
+                title: "Refines",
+                description: "Improve and re-train Waves with real usage data.",
+              },
+              {
+                icon: ArrowRight,
+                title: "Deploys",
+                description: "Push updates directly to employee desktops.",
+              },
+              {
+                icon: BarChart3,
+                title: "Audits",
+                description: "Track outcomes, compliance, and ROI.",
+              },
+            ].map(({ icon: Icon, title, description }) => (
+              <div key={title} className="bg-card p-8 rounded-2xl text-left">
+                <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6">
+                  <Icon className="w-6 h-6" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Customization</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Upload product docs, policies, SLAs, SOPs, and glossaries.
-                  </p>
-                </div>
+                <h3 className="text-xl font-semibold mb-2">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{description}</p>
               </div>
-
-              <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                  <Target className="w-6 h-6 text-foreground" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Waves</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Transform static knowledge into structured, voice-triggered workflows.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-6 h-6 text-foreground" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Role-Aware Delivery</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Sales, Legal, Support, Engineering each get tailored Waves.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                  <Zap className="w-6 h-6 text-foreground" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Governance & Guardrails</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Admins approve language, block unsafe responses.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                  <RotateCw className="w-6 h-6 text-foreground" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Auditability</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Every Wave is logged, versioned, and performance-tracked.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
-                  <Palette className="w-6 h-6 text-foreground" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-medium mb-3">Real-Time Intelligence</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Context-aware workflows surface automatically during calls based on conversation dynamics.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Code Example */}
-          <div className="max-w-4xl mx-auto mt-16">
-            <h4 className="text-lg font-medium mb-6">Complete System Prompt + Wave Example in XML:</h4>
-            <CodeEditor 
-              code={combinedCode} 
-              language="xml" 
-              title="alongside-system-prompt-with-wave-example.xml" 
+          <div className="max-w-4xl mx-auto mt-24">
+            <h3 className="text-2xl font-medium mb-6">
+              Example — A Voice-Triggered Security Wave
+            </h3>
+            <CodeEditor
+              code={exampleSystemPrompt}
+              language="xml"
+              title="security-wave-example.xml"
               collapsible={true}
               previewLines={10}
             />
-            <p className="text-muted-foreground mt-6 italic text-center">
-              This is how AlongsideOS turns your content into <strong>reusable, auditable voice workflows</strong>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Delivered Through Voice */}
-      <section className="py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Delivered Through Voice</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              AlongsideOS isn't a dashboard you check later. It's <strong className="text-foreground">an unobtrusive assistant in the room with you</strong>.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
-                <Zap className="w-6 h-6 text-foreground" />
-              </div>
-              <div>
-                <h3 className="text-xl font-medium mb-4">Active Prompt</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Context-aware suggestions surface automatically while you speak.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
-                <Users className="w-6 h-6 text-foreground" />
-              </div>
-              <div>
-                <h3 className="text-xl font-medium mb-4">Team Prompts</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Shared, reusable Waves curated by admins, voice-triggered in calls.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
-                <Target className="w-6 h-6 text-foreground" />
-              </div>
-              <div>
-                <h3 className="text-xl font-medium mb-4">Instant Lookups</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Ask by voice for policies, definitions, or competitive intel — get the answer instantly.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center mt-16">
-            <blockquote className="text-xl text-muted-foreground italic max-w-3xl mx-auto border-l-4 border-primary pl-6">
-              <strong className="text-foreground not-italic">This immediacy is what distinguishes AlongsideOS</strong>: the only platform where voice + workflows meet.
-            </blockquote>
           </div>
         </div>
       </section>
 
       {/* Features for Every Role */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-24 sm:py-32 bg-muted/30">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Features for Every Role</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              Features for Every Role
+            </h2>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16">
-            <div>
-              <h3 className="text-2xl font-medium mb-8">For Teams</h3>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div className="bg-card p-8 rounded-2xl">
+              <h3 className="text-2xl font-semibold mb-8">For Teams</h3>
               <div className="space-y-6">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
-                  <span>Trigger prompts by voice or click</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
-                  <span>Save and star useful answers</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
-                  <span>Propose new prompts to the library</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
-                  <span>Share snippets with peers</span>
-                </div>
+                {[
+                  "Trigger prompts by voice or click",
+                  "Save and star useful answers",
+                  "Propose new prompts to the library",
+                  "Share snippets with peers",
+                ].map((feature) => (
+                  <div key={feature} className="flex items-center space-x-4">
+                    <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                    <span className="text-lg text-muted-foreground">{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div>
-              <h3 className="text-2xl font-medium mb-8">For Admins</h3>
+            <div className="bg-card p-8 rounded-2xl">
+              <h3 className="text-2xl font-semibold mb-8">For Admins</h3>
               <div className="space-y-6">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
-                  <span>Manage roles, permissions, and access</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
-                  <span>Approve/reject prompt suggestions</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
-                  <span>Configure compliance guardrails</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-foreground flex-shrink-0" />
-                  <span>Audit usage and track analytics</span>
-                </div>
+                {[
+                  "Manage roles, permissions, and access",
+                  "Approve/reject prompt suggestions",
+                  "Configure compliance guardrails",
+                  "Audit usage and track analytics",
+                ].map((feature) => (
+                  <div key={feature} className="flex items-center space-x-4">
+                    <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                    <span className="text-lg text-muted-foreground">{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
           </div>
         </div>
       </section>
 
       {/* Integrations */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Integrated Into Your Workflow</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              Integrated Into Your Workflow
+            </h2>
           </div>
 
-          <div className="space-y-8">
-            <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center">
-                  <Calendar className="w-8 h-8 text-foreground" />
+          <div className="space-y-8 max-w-4xl mx-auto">
+            {[
+              {
+                icon: Calendar,
+                title: "Google Calendar Integration",
+                description:
+                  "Pre-loads meeting context (title, attendees, links) so AlongsideOS is ready the moment a call begins.",
+                badge: "Auto-sync",
+              },
+              {
+                icon: Mic,
+                title: "Conferencing Tools",
+                description: "Works seamlessly alongside Zoom, Teams, Meet, and others.",
+                badge: "Universal",
+              },
+              {
+                icon: Shield,
+                title: "Enterprise Identity",
+                description: "Secure SSO and role mapping, managed by admins.",
+                badge: "SSO Ready",
+              },
+            ].map(({ icon: Icon, title, description, badge }) => (
+              <div
+                key={title}
+                className="bg-card border rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center gap-8"
+              >
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
+                    <Icon className="w-8 h-8" />
+                  </div>
+                </div>
+                <div className="flex-1 text-left">
+                  <h3 className="text-2xl font-semibold mb-2">{title}</h3>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{description}</p>
+                </div>
+                <div className="flex-shrink-0 pt-4 md:pt-0">
+                  <Badge variant="secondary" className="text-sm px-4 py-2">
+                    {badge}
+                  </Badge>
                 </div>
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-medium mb-4">Google Calendar Integration</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Pre-loads meeting context (title, attendees, links) so AlongsideOS is ready the moment a call begins.
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <Badge variant="secondary" className="text-sm px-4 py-2">
-                  Auto-sync
-                </Badge>
-              </div>
-            </div>
-
-            <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center">
-                  <Mic className="w-8 h-8 text-foreground" />
-                </div>
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-medium mb-4">Conferencing Tools</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Works seamlessly alongside Zoom, Teams, Meet, and others.
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <Badge variant="secondary" className="text-sm px-4 py-2">
-                  Universal
-                </Badge>
-              </div>
-            </div>
-
-            <div className="bg-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center">
-                  <Shield className="w-8 h-8 text-foreground" />
-                </div>
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-2xl font-medium mb-4">Enterprise Identity</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  Secure SSO and role mapping, managed by admins.
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <Badge variant="secondary" className="text-sm px-4 py-2">
-                  SSO Ready
-                </Badge>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Rollout & Adoption */}
-      <section className="py-24">
+      <section className="py-24 sm:py-32 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Rollout & Adoption</h2>
-            <p className="text-xl text-muted-foreground">A structured approach to enterprise success</p>
+          <div className="text-center mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              Rollout & Adoption
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground">
+              A structured approach to enterprise success
+            </p>
           </div>
 
-          <div className="relative">
+          <div className="relative max-w-4xl mx-auto">
             {/* Timeline line */}
-            <div className="absolute left-8 top-16 bottom-16 w-0.5 bg-border hidden md:block"></div>
+            <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-border hidden md:block"></div>
 
             <div className="space-y-16">
-              <div className="flex flex-col md:flex-row items-start gap-8">
-                <div className="flex-shrink-0 relative">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl">
-                    1
+              {[
+                {
+                  step: 1,
+                  emoji: "🚀",
+                  title: "Team Kickoff",
+                  description:
+                    "Structured kickoff sessions ensure high adoption from day one. Teams get hands-on guidance, tailored to their roles.",
+                  badges: ["Role-specific training", "Hands-on guidance", "Day 1 ready"],
+                },
+                {
+                  step: 2,
+                  emoji: "🛠",
+                  title: "Admin Training",
+                  description:
+                    "Admins learn to configure prompts, manage roles, enforce compliance, and measure outcomes.",
+                  badges: ["Prompt configuration", "Role management", "Compliance setup"],
+                },
+                {
+                  step: 3,
+                  emoji: "📈",
+                  title: "Ongoing Enablement",
+                  description:
+                    "Content refresh cycles and analytics keep the Customization Suite aligned with business changes.",
+                  badges: ["Content refresh", "Analytics tracking", "Business alignment"],
+                },
+              ].map(({ step, emoji, title, description, badges }) => (
+                <div key={step} className="flex flex-col md:flex-row items-start gap-8">
+                  <div className="flex-shrink-0 relative z-10">
+                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl">
+                      {step}
+                    </div>
                   </div>
-                  <div className="absolute -top-2 -left-2 w-20 h-20 border-2 border-primary/20 rounded-full animate-pulse"></div>
-                </div>
-                <div className="flex-1 bg-gradient-to-r from-primary/5 to-transparent rounded-2xl p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">🚀</span>
-                    <h3 className="text-2xl font-medium">Team Kickoff</h3>
-                  </div>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Structured kickoff sessions ensure high adoption from day one. Teams get hands-on guidance, tailored
-                    to their roles.
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    <Badge variant="outline">Role-specific training</Badge>
-                    <Badge variant="outline">Hands-on guidance</Badge>
-                    <Badge variant="outline">Day 1 ready</Badge>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col md:flex-row items-start gap-8">
-                <div className="flex-shrink-0 relative">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl">
-                    2
-                  </div>
-                </div>
-                <div className="flex-1 bg-gradient-to-r from-blue-500/5 to-transparent rounded-2xl p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">🛠</span>
-                    <h3 className="text-2xl font-medium">Admin Training</h3>
-                  </div>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Admins learn to configure prompts, manage roles, enforce compliance, and measure outcomes.
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    <Badge variant="outline">Prompt configuration</Badge>
-                    <Badge variant="outline">Role management</Badge>
-                    <Badge variant="outline">Compliance setup</Badge>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col md:flex-row items-start gap-8">
-                <div className="flex-shrink-0 relative">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl">
-                    3
+                  <div className="flex-1 bg-card border rounded-2xl p-8">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="text-3xl">{emoji}</span>
+                      <h3 className="text-2xl font-semibold">{title}</h3>
+                    </div>
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {description}
+                    </p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {badges.map((badge) => (
+                        <Badge key={badge} variant="outline">
+                          {badge}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className="flex-1 bg-gradient-to-r from-green-500/5 to-transparent rounded-2xl p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">📈</span>
-                    <h3 className="text-2xl font-medium">Ongoing Enablement</h3>
-                  </div>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Content refresh cycles and analytics keep the Customization Suite aligned with business changes.
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    <Badge variant="outline">Content refresh</Badge>
-                    <Badge variant="outline">Analytics tracking</Badge>
-                    <Badge variant="outline">Business alignment</Badge>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Use Cases */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Where Enterprises Use AlongsideOS</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              Where Enterprises Use AlongsideOS
+            </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <TrendingUp className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium mb-2">Win Sales Deals</h3>
-              <p className="text-sm text-muted-foreground">Handle technical and pricing objections live.</p>
-            </div>
-            <div className="text-center">
-              <Shield className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium mb-2">Stay Compliant</h3>
-              <p className="text-sm text-muted-foreground">Keep regulated answers aligned and safe.</p>
-            </div>
-            <div className="text-center">
-              <Users className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium mb-2">Accelerate Onboarding</h3>
-              <p className="text-sm text-muted-foreground">New hires learn directly in live calls.</p>
-            </div>
-            <div className="text-center">
-              <Target className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium mb-2">Elevate Support</h3>
-              <p className="text-sm text-muted-foreground">
-                Resolve issues faster with guided troubleshooting prompts.
-              </p>
-            </div>
+            {[
+              {
+                icon: TrendingUp,
+                title: "Win Sales Deals",
+                description: "Handle technical and pricing objections live.",
+              },
+              {
+                icon: Shield,
+                title: "Stay Compliant",
+                description: "Keep regulated answers aligned and safe.",
+              },
+              {
+                icon: Users,
+                title: "Accelerate Onboarding",
+                description: "New hires learn directly in live calls.",
+              },
+              {
+                icon: Target,
+                title: "Elevate Support",
+                description: "Resolve issues faster with guided troubleshooting prompts.",
+              },
+            ].map(({ icon: Icon, title, description }) => (
+              <div key={title} className="bg-card p-8 rounded-2xl text-center">
+                <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ROI / Outcomes */}
-      <section className="py-24">
+      <section className="py-24 sm:py-32 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Measurable Business Outcomes</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              Measurable Business Outcomes
+            </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <Clock className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium mb-2">Faster ramp</h3>
-              <p className="text-sm text-muted-foreground">reps customer-ready in days, not weeks</p>
-            </div>
-            <div className="text-center">
-              <TrendingUp className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium mb-2">Higher win rates</h3>
-              <p className="text-sm text-muted-foreground">live objection handling boosts confidence</p>
-            </div>
-            <div className="text-center">
-              <Shield className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium mb-2">Reduced risk</h3>
-              <p className="text-sm text-muted-foreground">approved answers only, in every call</p>
-            </div>
-            <div className="text-center">
-              <BarChart3 className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium mb-2">Stronger ROI</h3>
-              <p className="text-sm text-muted-foreground">enablement tied directly to your custom content</p>
-            </div>
+            {[
+              {
+                icon: Clock,
+                title: "Faster ramp",
+                description: "Reps customer-ready in days, not weeks.",
+              },
+              {
+                icon: TrendingUp,
+                title: "Higher win rates",
+                description: "Live objection handling boosts confidence.",
+              },
+              {
+                icon: Shield,
+                title: "Reduced risk",
+                description: "Approved answers only, in every call.",
+              },
+              {
+                icon: BarChart3,
+                title: "Stronger ROI",
+                description: "Enablement tied directly to your custom content.",
+              },
+            ].map(({ icon: Icon, title, description }) => (
+              <div key={title} className="text-center">
+                <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 capitalize">{title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-24 sm:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">What Enterprises Say</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              What Enterprises Say
+            </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-muted/50 rounded-lg p-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="bg-card border rounded-2xl p-8">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
+                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                 ))}
               </div>
-              <blockquote className="text-lg leading-relaxed mb-6">
-                "AlongsideOS's Customization Suite made our product knowledge usable in real time. That changed our win
-                rate."
+              <blockquote className="text-lg leading-relaxed text-foreground mb-6">
+                "AlongsideOS's Customization Suite made our product knowledge usable in real time.
+                That changed our win rate."
               </blockquote>
               <div className="text-sm text-muted-foreground">— VP Sales, SaaS Enterprise</div>
             </div>
-            <div className="bg-muted/50 rounded-lg p-8">
+            <div className="bg-card border rounded-2xl p-8">
               <div className="flex items-center mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
+                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                 ))}
               </div>
-              <blockquote className="text-lg leading-relaxed mb-6">
+              <blockquote className="text-lg leading-relaxed text-foreground mb-6">
                 "Team Prompts + Active Prompt turned compliance from a liability into a strength."
               </blockquote>
-              <div className="text-sm text-muted-foreground">— Head of Risk, Financial Services</div>
+              <div className="text-sm text-muted-foreground">
+                — Head of Risk, Financial Services
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Security */}
-      <section id="security" className="py-24">
+      <section id="security" className="py-24 sm:py-32 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Enterprise Security & Governance</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              Enterprise Security & Governance
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <Shield className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium">Role-based access control</h3>
-            </div>
-            <div className="text-center">
-              <Users className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium">Admin-only customization privileges</h3>
-            </div>
-            <div className="text-center">
-              <BarChart3 className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium">Audit trails for prompts and knowledge changes</h3>
-            </div>
-            <div className="text-center">
-              <Award className="w-8 h-8 text-foreground mx-auto mb-4" />
-              <h3 className="font-medium">Least-privilege defaults and compliance-ready design</h3>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: Shield,
+                title: "Role-based access control",
+              },
+              {
+                icon: Users,
+                title: "Admin-only customization privileges",
+              },
+              {
+                icon: BarChart3,
+                title: "Audit trails for prompts and knowledge changes",
+              },
+              {
+                icon: Award,
+                title: "Least-privilege defaults and compliance-ready design",
+              },
+            ].map(({ icon: Icon, title }) => (
+              <div key={title} className="text-center">
+                <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-lg font-medium">{title}</h3>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Booking Calendar */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-24 sm:py-32">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Start Your Enterprise Pilot</h2>
-            <p className="text-xl text-muted-foreground text-balance leading-relaxed">
-              AlongsideOS is <strong className="text-foreground">the world's first voice-first AI workflow platform</strong>. 
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              Start Your Enterprise Pilot
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground text-balance leading-relaxed">
               Turn your knowledge into live, auditable voice workflows today.
             </p>
           </div>
 
-          <div className="bg-card rounded-lg border overflow-hidden relative">
-            {/* Background iframe for visual appeal */}
-            <iframe 
-              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tWEP8ks8gSOwZ2kdhx6hMOUXDrzRb8qVC4yPTsOhs-zBKLP3GSCCAW0PVBXXFbAlxy3T5y8Ve?gv=true" 
-              className="w-full h-[600px] border-0 pointer-events-none"
-              title="Schedule Demo with AlongsideOS Preview"
-              tabIndex={-1}
-            />
-            
-            {/* Gray modal overlay */}
-            <div className="absolute inset-0 bg-gray-900/30 backdrop-blur-sm flex items-center justify-center">
-              <div className="text-center text-black px-6">
-                <div className="mb-6">
-                  <Calendar className="w-16 h-16 mx-auto mb-4 text-black" />
-                  <div className="bg-white/80 backdrop-blur-md rounded-lg p-4 mb-4">
-                    <h3 className="text-2xl font-semibold mb-2">Ready to See AlongsideOS in Action?</h3>
-                    <p className="text-gray-800 text-lg">
-                      Book a personalized demo and discover how voice AI can transform your workflow.
-                    </p>
+          <div className="bg-card rounded-2xl border overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-background/50 backdrop-blur-sm flex items-center justify-center">
+              <div className="text-center text-foreground px-6">
+                <div className="mb-8">
+                  <div className="w-20 h-20 mx-auto mb-6 bg-primary/10 text-primary rounded-full flex items-center justify-center">
+                    <Calendar className="w-10 h-10" />
                   </div>
+                  <h3 className="text-3xl font-semibold mb-2">
+                    Ready to See AlongsideOS in Action?
+                  </h3>
+                  <p className="text-muted-foreground text-lg">
+                    Book a personalized demo and discover how voice AI can transform your workflow.
+                  </p>
                 </div>
-                <Button 
-                  size="lg" 
-                  onClick={handleCalendarClick}
-                  className="text-base px-8 py-3 bg-white text-gray-900 hover:bg-gray-100"
-                >
+                <Button size="lg" onClick={handleCalendarClick} className="text-base px-8 py-3">
                   Book Demo Now
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </div>
             </div>
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tWEP8ks8gSOwZ2kdhx6hMOUXDrzRb8qVC4yPTsOhs-zBKLP3GSCCAW0PVBXXFbAlxy3T5y8Ve?gv=true"
+              className="w-full h-[600px] border-0 pointer-events-none opacity-10"
+              title="Schedule Demo with AlongsideOS Preview"
+              tabIndex={-1}
+            />
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-24 sm:py-32 bg-muted/30">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-light text-balance mb-6">Frequently Asked Questions</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-balance tracking-tight mb-6">
+              Frequently Asked Questions
+            </h2>
           </div>
 
           <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="item-1" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">How does Google Calendar integration help?</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                It preloads meeting context so Waves are relevant from the first second.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-2" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">
-                What are Waves?
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                Waves are <strong>voice-based AI workflows</strong> generated and deployed by the AlongsideOS Platform.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-3" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">How are Waves different from prompts?</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                Prompts are static. <strong>Waves are dynamic, role-aware, auditable workflows</strong> tied to compliance and outcomes.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-4" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">How does AlongsideOS differ from other AI tools?</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                Unlike Distyl (workflow-first) or Cluely (note-taking + prompts), AlongsideOS unites both:
-                <br/><br/>
-                • <strong>Immediate voice guidance</strong><br/>
-                • <strong>Customizable workflows (Waves)</strong><br/>
-                • <strong>Enterprise governance</strong>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-5" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">Does AlongsideOS record meetings?</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                No. It focuses on in-call enablement. Recording is admin-configurable.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-6" className="bg-card border-0 rounded-lg px-6">
-              <AccordionTrigger className="text-left">Who controls customization?</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">
-                Admins only. They define, refine, and approve all Waves.
-              </AccordionContent>
-            </AccordionItem>
+            {[
+              {
+                q: "How does Google Calendar integration help?",
+                a: "It preloads meeting context so Waves are relevant from the first second.",
+              },
+              {
+                q: "What are Waves?",
+                a: "Waves are <strong>voice-based AI workflows</strong> generated and deployed by the AlongsideOS Platform.",
+              },
+              {
+                q: "How are Waves different from prompts?",
+                a: "Prompts are static. <strong>Waves are dynamic, role-aware, auditable workflows</strong> tied to compliance and outcomes.",
+              },
+              {
+                q: "How does AlongsideOS differ from other AI tools?",
+                a: "Unlike Distyl (workflow-first) or Cluely (note-taking + prompts), AlongsideOS unites both:<br/><br/>• <strong>Immediate voice guidance</strong><br/>• <strong>Customizable workflows (Waves)</strong><br/>• <strong>Enterprise governance</strong>",
+              },
+              {
+                q: "Does AlongsideOS record meetings?",
+                a: "No. It focuses on in-call enablement. Recording is admin-configurable.",
+              },
+              {
+                q: "Who controls customization?",
+                a: "Admins only. They define, refine, and approve all Waves.",
+              },
+            ].map(({ q, a }, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i + 1}`}
+                className="bg-card border rounded-lg"
+              >
+                <AccordionTrigger className="text-left text-lg px-6 py-4">
+                  {q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base px-6 pb-4">
+                  <div dangerouslySetInnerHTML={{ __html: a }} />
+                </AccordionContent>
+              </AccordionItem>
+            ))}
           </Accordion>
         </div>
       </section>
@@ -932,17 +825,17 @@ ${xmlCode}
               <img src="/logo.png" alt="AlongsideOS" className="w-8 h-8" />
               <span className="text-xl font-semibold">AlongsideOS</span>
             </div>
-            <p className="text-muted-foreground mb-6">
-              The comprehensive <strong>AI Enablement platform</strong>: customized, governed, and delivered through
-              voice.
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+              The comprehensive <strong>AI Enablement platform</strong>: customized, governed, and
+              delivered through voice.
             </p>
-            <Button size="lg" className="mb-8">
+            <Button size="lg" onClick={handleCalendarClick}>
               Request a Demo
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-sm text-muted-foreground mt-12 border-t border-border pt-8">
             <span>© 2025 AlongsideOS Inc.</span>
             <a href="#" className="hover:text-foreground transition-colors">
               Privacy

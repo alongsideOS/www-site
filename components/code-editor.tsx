@@ -86,7 +86,7 @@ export function CodeEditor({
       </div>
       <CardContent className="p-0">
         <div className={`overflow-x-auto transition-all duration-300 ease-in-out ${
-          collapsible && !isExpanded ? 'max-h-32' : ''
+          collapsible && !isExpanded ? 'max-h-72' : ''
         }`}>
           <SyntaxHighlighter
             language={language}
