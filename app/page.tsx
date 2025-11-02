@@ -180,7 +180,7 @@ export default function HomePage() {
                 AI That Sees, Hears, and Acts
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Real enterprise AI belongs on your desktop — alongside your OS, where it can see
+                Real enterprise AI belongs on your desktop — <Underline>alongside</Underline> your OS, where it can see
                 your screen, hear your context, and act with you instantly.
               </p>
             </div>
