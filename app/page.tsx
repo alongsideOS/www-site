@@ -151,7 +151,7 @@ export default function HomePage() {
         {/* Hero */}
         <section className="py-24 sm:py-32 md:py-40">
           <div className="container mx-auto max-w-7xl px-6 text-center">
-            <div className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-widest text-primary mb-4">
+            <div className="text-lg sm:text-xl md:text-2xl font-bold tracking-widest text-primary mb-4">
               <Underline>AlongsideOS</Underline>
             </div>
             <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl">
